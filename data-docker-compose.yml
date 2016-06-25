@@ -1,0 +1,10 @@
+data:
+    hostname: podcast_scraper-data
+    image: podcast_scraper-base
+    command: start
+    container_name: podcast_scraper-data
+    volumes:
+        - "./container_shared:/container_shared"
+        - "./docker/base/config:/config"
+        - /data
+    entrypoint: ['python3', '/config/run.py']

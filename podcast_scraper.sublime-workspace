@@ -1,0 +1,2839 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"Scr",
+				"PodcastScraping	class"
+			],
+			[
+				"podc",
+				"podcast"
+			],
+			[
+				"adm",
+				"admin	import"
+			],
+			[
+				"Pod",
+				"Podcast	class"
+			],
+			[
+				"au",
+				"audio_type	statement"
+			],
+			[
+				"leng",
+				"length"
+			],
+			[
+				"ge",
+				"generate_rss_xml	function"
+			],
+			[
+				"im",
+				"image_url	statement"
+			],
+			[
+				"it",
+				"itunes_ns	statement"
+			],
+			[
+				"For",
+				"ForeignKey"
+			],
+			[
+				"wor",
+				"word_indices"
+			],
+			[
+				"id",
+				"indice"
+			],
+			[
+				"best",
+				"best_C"
+			],
+			[
+				"test",
+				"test_C"
+			],
+			[
+				"tra",
+				"train_y"
+			],
+			[
+				"train",
+				"train_X"
+			],
+			[
+				"Thet",
+				"Theta1"
+			],
+			[
+				"The",
+				"Theta2"
+			],
+			[
+				"y_",
+				"y_matrix"
+			],
+			[
+				"Th",
+				"Theta2"
+			],
+			[
+				"the",
+				"theta"
+			],
+			[
+				"max_",
+				"max_widths_base	statement"
+			],
+			[
+				"he",
+				"headers"
+			],
+			[
+				"hea",
+				"headers"
+			],
+			[
+				"head",
+				"header"
+			],
+			[
+				"an",
+				"answer	statement"
+			],
+			[
+				"questi",
+				"questions"
+			],
+			[
+				"time",
+				"timer"
+			],
+			[
+				"get",
+				"get_model	function"
+			],
+			[
+				"call",
+				"callentry	statement"
+			],
+			[
+				"cal",
+				"callentry	statement"
+			],
+			[
+				"creat",
+				"create"
+			],
+			[
+				"Dat",
+				"DateTimeField	class"
+			],
+			[
+				"vi",
+				"views	module"
+			],
+			[
+				"is",
+				"is_call_active"
+			],
+			[
+				"po",
+				"property	New Property"
+			],
+			[
+				"par",
+				"participants	module"
+			],
+			[
+				"cre",
+				"created	statement"
+			],
+			[
+				"pho",
+				"phone_number"
+			],
+			[
+				"phon",
+				"Phone"
+			],
+			[
+				"text",
+				"text-align"
+			],
+			[
+				"ta",
+				"talktoyourapp"
+			],
+			[
+				"pr",
+				"process	function"
+			],
+			[
+				"no",
+				"no_merged_branches	statement"
+			],
+			[
+				"pro",
+				"process	statement"
+			],
+			[
+				"en",
+				"end_line	statement"
+			],
+			[
+				"be",
+				"begin_line"
+			],
+			[
+				"ex",
+				"executable	instance"
+			],
+			[
+				"exit",
+				"exitCode"
+			],
+			[
+				"ou",
+				"output_file	param"
+			],
+			[
+				"u",
+				"util	module"
+			],
+			[
+				"re",
+				"return	keyword"
+			],
+			[
+				"this",
+				"this_view	statement"
+			],
+			[
+				"di",
+				"dirname	function"
+			],
+			[
+				"con",
+				"continue"
+			],
+			[
+				"zi",
+				"zipfile"
+			],
+			[
+				"err",
+				"error"
+			],
+			[
+				"not",
+				"not_processed"
+			],
+			[
+				"F",
+				"False"
+			],
+			[
+				"r",
+				"return"
+			],
+			[
+				"context",
+				"contexts_"
+			],
+			[
+				"Http",
+				"HttpResponseNotFound	import"
+			],
+			[
+				"exce",
+				"except	keyword"
+			],
+			[
+				"N",
+				"None	keyword"
+			],
+			[
+				"ms",
+				"msg	param"
+			],
+			[
+				"__",
+				"__init__	init"
+			],
+			[
+				"la",
+				"layer_fs"
+			],
+			[
+				"html",
+				"html_error"
+			],
+			[
+				"conten",
+				"content_docs"
+			],
+			[
+				"loc",
+				"lock_name	statement"
+			],
+			[
+				"date",
+				"datetime	class"
+			],
+			[
+				"tas",
+				"task_id	statement"
+			],
+			[
+				"SE",
+				"SERVICE_SUPPORTED_CLIENT_VERSIONS"
+			],
+			[
+				"remote",
+				"remote_pdb	module"
+			],
+			[
+				"render",
+				"render_to_json	import"
+			],
+			[
+				"reposit",
+				"repository	param"
+			],
+			[
+				"repo",
+				"repository_dir	param"
+			],
+			[
+				"aa",
+				"aae_core"
+			],
+			[
+				"K",
+				"KeyError	class"
+			],
+			[
+				"rp",
+				"rpdb	rpdb"
+			],
+			[
+				"modu",
+				"modules"
+			],
+			[
+				"tmp",
+				"tmp_dir"
+			],
+			[
+				"content",
+				"content_docs_dir"
+			],
+			[
+				"repos",
+				"repository1"
+			],
+			[
+				"RE",
+				"REPOSITORY_PATH_TEMPLATE	statement"
+			],
+			[
+				"tar",
+				"target_doc_dir_bak	statement"
+			],
+			[
+				"mak",
+				"makedirs	function"
+			],
+			[
+				"cont",
+				"content"
+			],
+			[
+				"aae",
+				"aae_content"
+			],
+			[
+				"reposi",
+				"repository"
+			],
+			[
+				"Inde",
+				"IndexError	class"
+			],
+			[
+				"wi",
+				"width"
+			],
+			[
+				"fun",
+				"function"
+			],
+			[
+				"remo",
+				"removeClass"
+			],
+			[
+				"in",
+				"inline-block"
+			],
+			[
+				"max",
+				"max-width"
+			],
+			[
+				"tes",
+				"test_func	statement"
+			],
+			[
+				"log",
+				"login_required"
+			]
+		]
+	},
+	"buffers":
+	[
+		{
+			"file": "docker-compose.yml",
+			"settings":
+			{
+				"buffer_size": 1256,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "buildall.sh",
+			"settings":
+			{
+				"buffer_size": 901,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "data-docker-compose.yml",
+			"settings":
+			{
+				"buffer_size": 298,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "docker/django-python3/config/run.py",
+			"settings":
+			{
+				"buffer_size": 2276,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "src/podcast/admin.py",
+			"settings":
+			{
+				"buffer_size": 706,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "src/podcast/models.py",
+			"settings":
+			{
+				"buffer_size": 3309,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"contents": "FROM podcast_scraper-base\nRUN set -x && apt-get update && DEBIAN_FRONTEND=noninteractive \\\n      apt-get install -y --no-install-recommends \\\n        libpq5 \\\n        libpython3.4 \\\n        libpq-dev \\\n        build-essential \\\n        python3-dev\n\nRUN pip3 install \\\n      django==1.9.7 \\\n      psycopg2==2.6.1 \\\n      django-debug-toolbar==1.4 \\\n      djangorestframework==3.3.3 \\\n      markdown==2.6.6 \\\n      django-filter==0.13.0 \\\n      django-crispy-forms==1.6.0 \\\n      django-cleanup==0.4.2 \\\n      django-extensions==1.6.7 \\\n      django-compressor==2.0\n\nWORKDIR /src/\n\n\n",
+			"file": "docker/django-python3/Dockerfile",
+			"file_size": 605,
+			"file_write_time": 131107967410000000,
+			"settings":
+			{
+				"buffer_size": 581,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "src/podcast/management/commands/scrap.py",
+			"settings":
+			{
+				"buffer_size": 845,
+				"line_ending": "Unix"
+			}
+		}
+	],
+	"build_system": "",
+	"build_system_choices":
+	[
+	],
+	"build_varint": "",
+	"command_palette":
+	{
+		"height": 358.0,
+		"last_filter": "delete",
+		"selected_items":
+		[
+			[
+				"delete",
+				"File: Delete"
+			],
+			[
+				"requ",
+				"Set Syntax: requirements.txt"
+			],
+			[
+				"re",
+				"requirements.txt: Clear Cache"
+			],
+			[
+				"copy",
+				"File: Copy Path"
+			],
+			[
+				"got ",
+				"Anaconda: Goto Python object"
+			],
+			[
+				"copy ",
+				"File: Copy Name"
+			],
+			[
+				"for",
+				"Data Formatter: Format XML"
+			],
+			[
+				"m",
+				"Set Syntax: MATLAB"
+			],
+			[
+				"ma",
+				"Set Syntax: MATLAB"
+			],
+			[
+				"mat",
+				"Set Syntax: MATLAB"
+			],
+			[
+				"matl",
+				"Set Syntax: MATLAB"
+			],
+			[
+				"insta",
+				"Package Control: Install Package"
+			],
+			[
+				"remove",
+				"Package Control: Remove Package"
+			],
+			[
+				"pack",
+				"Package Control: Upgrade Package"
+			],
+			[
+				"replpy",
+				"SublimeREPL: Python"
+			],
+			[
+				"matla",
+				"Set Syntax: MATLAB"
+			],
+			[
+				"matlab",
+				"Set Syntax: MATLAB"
+			],
+			[
+				"setmat",
+				"Set Syntax: MATLAB"
+			],
+			[
+				"setsmat",
+				"Set Syntax: MATLAB"
+			],
+			[
+				"ins",
+				"Package Control: Install Package"
+			],
+			[
+				"install",
+				"Package Control: Install Package"
+			],
+			[
+				"patch",
+				"Preferences: Patch Apply Settings – User"
+			],
+			[
+				"remove pa",
+				"Package Control: Remove Package"
+			],
+			[
+				"git push",
+				"Git: Push"
+			],
+			[
+				"git omm",
+				"Git: Commit"
+			],
+			[
+				"git add",
+				"Git: Add Current File"
+			],
+			[
+				"git pus",
+				"Git: Push"
+			],
+			[
+				"git comm",
+				"Git: Commit"
+			],
+			[
+				"git ",
+				"Git: Commit"
+			],
+			[
+				"git pu",
+				"Git: Push"
+			],
+			[
+				"git c",
+				"Git: Commit"
+			],
+			[
+				"gitad",
+				"Git: Add..."
+			],
+			[
+				"git push ",
+				"Git: Push"
+			],
+			[
+				"git com",
+				"Git: Commit"
+			],
+			[
+				"git co",
+				"Git: Commit"
+			],
+			[
+				"git diff",
+				"Git: Diff All Files"
+			],
+			[
+				"git stash",
+				"Git: Stash Pop"
+			],
+			[
+				"git log",
+				"Git: Log Current File"
+			],
+			[
+				"git pull",
+				"Git: Pull"
+			],
+			[
+				"git change",
+				"Git: Change Branch"
+			],
+			[
+				"is",
+				"ImportSort: Sort imports"
+			],
+			[
+				"iso",
+				"ImportSort: Sort imports"
+			],
+			[
+				"requi",
+				"requirements.txt: Clear Cache"
+			],
+			[
+				"pretty",
+				"HTMLPrettify"
+			],
+			[
+				"gti comm",
+				"Git: Commit"
+			],
+			[
+				"git stat",
+				"Git: Status"
+			],
+			[
+				"goog",
+				"Google Spell Check"
+			],
+			[
+				"setnpyt",
+				"Set Syntax: PythonImproved"
+			],
+			[
+				"setpyt",
+				"Set Syntax: PythonImproved"
+			],
+			[
+				"instal",
+				"Package Control: Install Package"
+			],
+			[
+				"install p",
+				"Package Control: Install Package"
+			],
+			[
+				"dele",
+				"Git: Delete Branch"
+			],
+			[
+				"git dele",
+				"Git: Delete Branch"
+			],
+			[
+				"my aw",
+				"Preferences: My Awesome Key Bindings – Default"
+			],
+			[
+				"myaw",
+				"Preferences: My Awesome Settings – User"
+			],
+			[
+				"setjs",
+				"Set Syntax: JSON"
+			],
+			[
+				"my",
+				"My Awesome Plugin: Command name"
+			],
+			[
+				"setsjs",
+				"Set Syntax: JSON"
+			],
+			[
+				"setjson",
+				"Set Syntax: JSON"
+			],
+			[
+				"prefere",
+				"Preferences: Settings - User"
+			],
+			[
+				"json",
+				"Data Formatter: Format JSON"
+			],
+			[
+				"JSON",
+				"Data Formatter: Format JSON"
+			],
+			[
+				"python im",
+				"Set Syntax: PythonImproved"
+			],
+			[
+				"form",
+				"Data Formatter: Format JSON"
+			],
+			[
+				"forma",
+				"Data Formatter: Format JSON"
+			],
+			[
+				"js",
+				"Set Syntax: JavaScript"
+			],
+			[
+				"fo",
+				"Data Formatter: Format JSON"
+			],
+			[
+				"data",
+				"Data Formatter: Format JSON"
+			],
+			[
+				"sell com",
+				"ShellCommand"
+			],
+			[
+				"install ",
+				"Package Control: Install Package"
+			],
+			[
+				"linit",
+				"SublimeLinter: Enable Linting"
+			],
+			[
+				"defau",
+				"Preferences: Key Bindings - Default"
+			],
+			[
+				"remo",
+				"Package Control: Remove Package"
+			],
+			[
+				"remove ",
+				"Package Control: Remove Package"
+			],
+			[
+				"enable",
+				"SublimeLinter: Enable Linter"
+			],
+			[
+				"enable ",
+				"SublimeLinter: Enable Linter"
+			],
+			[
+				"linting",
+				"SublimeLinter: Enable Linting"
+			],
+			[
+				"git lo",
+				"Git: Log Current File"
+			],
+			[
+				"git sho",
+				"Git: Show Current File"
+			],
+			[
+				"git show",
+				"Git: Show Tags"
+			],
+			[
+				"git bl",
+				"Git: Blame"
+			],
+			[
+				"git dif",
+				"Git: Diff Current File"
+			],
+			[
+				"git",
+				"Git: Blame"
+			],
+			[
+				"gi",
+				"Git: Blame"
+			],
+			[
+				"g",
+				"Git: Blame"
+			],
+			[
+				"set sypyth",
+				"Set Syntax: PythonImproved"
+			],
+			[
+				"gitlog",
+				"Git: Log All"
+			],
+			[
+				"git b",
+				"Git: Blame"
+			],
+			[
+				"ena",
+				"Package Control: Enable Package"
+			],
+			[
+				"dis",
+				"Package Control: Disable Package"
+			],
+			[
+				"en",
+				"Package Control: Enable Package"
+			],
+			[
+				"installpa",
+				"Package Control: Install Package"
+			],
+			[
+				"packains",
+				"Package Control: Install Package"
+			],
+			[
+				"package",
+				"Package Control: List Unmanaged Packages"
+			],
+			[
+				"remoge",
+				"Package Control: Remove Package"
+			],
+			[
+				"remoe",
+				"Package Control: Remove Package"
+			],
+			[
+				"enable p",
+				"Package Control: Enable Package"
+			],
+			[
+				"Package Control: ",
+				"Package Control: Disable Package"
+			],
+			[
+				"remove p",
+				"Package Control: Remove Package"
+			],
+			[
+				"git change ",
+				"Git: Change Branch"
+			],
+			[
+				"settings",
+				"Preferences: Settings - User"
+			],
+			[
+				"git bran",
+				"Git: Change Branch"
+			],
+			[
+				"removepa",
+				"Package Control: Remove Package"
+			],
+			[
+				"sublisett",
+				"Preferences: SublimeLinter Settings – User"
+			],
+			[
+				"sublimsett",
+				"Preferences: SublimeLinter Settings – Default"
+			],
+			[
+				"linter",
+				"SublimeLinter: Disable Linter"
+			],
+			[
+				"git ch",
+				"Git: Change Branch"
+			],
+			[
+				"GIT CHEC",
+				"Git: Change Branch"
+			],
+			[
+				"git l",
+				"Git: Log All"
+			],
+			[
+				"key user",
+				"Preferences: Key Bindings - User"
+			],
+			[
+				"key d",
+				"Preferences: Key Bindings - Default"
+			],
+			[
+				"git stas",
+				"Git: Stash Pop"
+			],
+			[
+				"git branc",
+				"Git: Change Branch"
+			],
+			[
+				"git  stas",
+				"Git: Stash Changes"
+			],
+			[
+				"update pac",
+				"Package Control: Upgrade/Overwrite All Packages"
+			],
+			[
+				"git unst",
+				"Git: Reset (unstage) All"
+			],
+			[
+				"git chec",
+				"Git: Checkout Current File"
+			],
+			[
+				"git unsta",
+				"Git: Reset (unstage) Current File"
+			],
+			[
+				"git check",
+				"Git: Checkout Current File"
+			],
+			[
+				"git loc",
+				"Git: Log Current File"
+			],
+			[
+				"key ",
+				"Preferences: Key Bindings - Default"
+			],
+			[
+				"key",
+				"Preferences: Key Bindings - Default"
+			],
+			[
+				"default",
+				"Preferences: Key Bindings - Default"
+			],
+			[
+				"sublimliner",
+				"SublimeLinter: Show All Errors"
+			],
+			[
+				"instal pa",
+				"Package Control: Install Package"
+			],
+			[
+				"serve",
+				"SublimeServer: Start SublimeServer"
+			],
+			[
+				"vagra",
+				"Anaconda: Vagrant Status"
+			],
+			[
+				"changel",
+				"Changelog"
+			]
+		],
+		"width": 678.0
+	},
+	"console":
+	{
+		"height": 467.0,
+		"history":
+		[
+			"sys.executable",
+			"import sys",
+			"os.path",
+			"os.path.cwd",
+			"os.cwd",
+			"import os",
+			"reload",
+			"python",
+			"jshint",
+			"'sdfsdf'.title()",
+			"'sdfs'.title()",
+			"'sdfs'.name()",
+			"python",
+			"import urllib.request,os,hashlib; h = 'eb2297e1a458f27d836c04bb0cbaf282' + 'd0e7a3098092775ccb37ca9d6b2e4b7d'; pf = 'Package Control.sublime-package'; ipp = sublime.installed_packages_path(); urllib.request.install_opener( urllib.request.build_opener( urllib.request.ProxyHandler()) ); by = urllib.request.urlopen( 'http://packagecontrol.io/' + pf.replace(' ', '%20')).read(); dh = hashlib.sha256(by).hexdigest(); print('Error validating download (got %s instead of %s), please try manual install' % (dh, h)) if dh != h else open(os.path.join( ipp, pf), 'wb' ).write(by)"
+		]
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"expanded_folders":
+	[
+		"/Users/kkuj/Workspace/podcast_scraper",
+		"/Users/kkuj/Workspace/podcast_scraper/docker",
+		"/Users/kkuj/Workspace/podcast_scraper/docker/django-python3",
+		"/Users/kkuj/Workspace/podcast_scraper/docker/django-python3/config",
+		"/Users/kkuj/Workspace/podcast_scraper/react",
+		"/Users/kkuj/Workspace/podcast_scraper/react/components",
+		"/Users/kkuj/Workspace/podcast_scraper/src",
+		"/Users/kkuj/Workspace/podcast_scraper/src/podcast",
+		"/Users/kkuj/Workspace/podcast_scraper/src/podcast/management",
+		"/Users/kkuj/Workspace/podcast_scraper/src/podcast/management/commands"
+	],
+	"file_history":
+	[
+		"/Users/kkuj/Workspace/podcast_scraper/data-docker-compose.yml",
+		"/Users/kkuj/Workspace/podcast_scraper/requirments.txt",
+		"/Users/kkuj/Workspace/podcast_scraper/src/podcast/tasks.py",
+		"/Users/kkuj/Workspace/podcast_scraper/caly_ten_musical.xml",
+		"/Users/kkuj/Workspace/podcast_scraper/src/podcast/models.py",
+		"/Users/kkuj/Workspace/podcast_scraper/src/core/settings.py",
+		"/Users/kkuj/Workspace/podcast_scraper/docker/django-python3/Dockerfile",
+		"/Users/kkuj/Workspace/podcast_scraper/docker/base/runutils.py",
+		"/Users/kkuj/Workspace/podcast_scraper/docker/base/skel/.bashrc",
+		"/Users/kkuj/Workspace/podcast_scraper/docker/django-python3/config/run.py",
+		"/Users/kkuj/Workspace/podcast_scraper/src/core/templates/rosetta/base.html",
+		"/Users/kkuj/Workspace/podcast_scraper/src/core/templates/admin/base_site.html",
+		"/Users/kkuj/Workspace/podcast_scraper/docker-compose.yml",
+		"/Users/kkuj/Workspace/podcast_scraper/docker/base/Dockerfile",
+		"/Users/kkuj/Workspace/podcast_scraper/production-docker-compose.yml",
+		"/Users/kkuj/Workspace/podcast_scraper/buildall.sh",
+		"/Users/kkuj/Workspace/podcast_scraper/docker/postgres/config/run.py",
+		"/Users/kkuj/Desktop/caly_ten_musical.xml",
+		"/Users/kkuj/Workspace/coursera-machine-learning/machine-learning-excersises/ex7/kMeansInitCentroids.m",
+		"/Users/kkuj/Workspace/coursera-machine-learning/machine-learning-excersises/ex2/plotData.m",
+		"/Users/kkuj/Workspace/coursera-machine-learning/machine-learning-excersises/ex7/ex7_pca.m",
+		"/Users/kkuj/Workspace/coursera-machine-learning/machine-learning-excersises/ex7/computeCentroids.m",
+		"/Users/kkuj/Workspace/coursera-machine-learning/machine-learning-excersises/ex6/processEmail.m",
+		"/Users/kkuj/Workspace/coursera-machine-learning/machine-learning-excersises/ex7.pdf",
+		"/Users/kkuj/Workspace/coursera-machine-learning/machine-learning-excersises/ex6/ex6_spam.m",
+		"/Users/kkuj/Workspace/coursera-machine-learning/machine-learning-excersises/ex6/emailFeatures.m",
+		"/Users/kkuj/Library/Application Support/Sublime Text 3/Packages/User/Preferences.sublime-settings",
+		"/Users/kkuj/Workspace/coursera-machine-learning/machine-learning-excersises/ex6/gaussianKernel.m",
+		"/Users/kkuj/Workspace/coursera-machine-learning/machine-learning-excersises/ex6/dataset3Params.m",
+		"/Users/kkuj/Workspace/coursera-machine-learning/machine-learning-excersises/ex6/ex6.m",
+		"/Users/kkuj/Workspace/coursera-machine-learning/machine-learning-excersises/ex6/visualizeBoundary.m",
+		"/Users/kkuj/Workspace/coursera-machine-learning/machine-learning-excersises/ex5/validationCurve.m",
+		"/Users/kkuj/Workspace/coursera-machine-learning/machine-learning-excersises/ex5/trainLinearReg.m",
+		"/Users/kkuj/Workspace/coursera-machine-learning/machine-learning-excersises/ex5/learningCurve.m",
+		"/Users/kkuj/Workspace/coursera-machine-learning/machine-learning-excersises/ex5/ex5.m",
+		"/Users/kkuj/Workspace/coursera-machine-learning/machine-learning-excersises/ex5/linearRegCostFunction.m",
+		"/Users/kkuj/Workspace/coursera-machine-learning/machine-learning-excersises/ex5/polyFeatures.m",
+		"/Users/kkuj/Workspace/coursera-machine-learning/machine-learning-excersises/ex2/ex2_reg.m",
+		"/Users/kkuj/Workspace/coursera-machine-learning/machine-learning-excersises/ex2/costFunctionReg.m",
+		"/Users/kkuj/Workspace/coursera-machine-learning/machine-learning-excersises/ex2/ex2.m",
+		"/Users/kkuj/Workspace/coursera-machine-learning/machine-learning-excersises/ex4/ex4.m",
+		"/Users/kkuj/Workspace/coursera-machine-learning/machine-learning-excersises/ex2/costFunction.m",
+		"/Users/kkuj/Workspace/coursera-machine-learning/machine-learning-excersises/ex3/predict.m",
+		"/Users/kkuj/Workspace/coursera-machine-learning/machine-learning-excersises/ex3/lrCostFunction.m",
+		"/Users/kkuj/Workspace/coursera-machine-learning/machine-learning-excersises/ex4/nnCostFunction.m",
+		"/Users/kkuj/Workspace/coursera-machine-learning/machine-learning-excersises/ex4/randInitializeWeights.m",
+		"/Users/kkuj/Workspace/coursera-machine-learning/machine-learning-excersises/ex4/sigmoidGradient.m",
+		"/Users/kkuj/Workspace/coursera-machine-learning/machine-learning-excersises/ex1/ex1.m",
+		"/Users/kkuj/Workspace/coursera-machine-learning/machine-learning-excersises/ex3/ex3.m",
+		"/Users/kkuj/Workspace/coursera-machine-learning/machine-learning-excersises/ex3/oneVsAll.m",
+		"/Users/kkuj/Workspace/coursera-machine-learning/machine-learning-excersises/ex3/predictOneVsAll.m",
+		"/Users/kkuj/Workspace/coursera-machine-learning/machine-learning-excersises/ex2/predict.m",
+		"/Users/kkuj/Workspace/coursera-machine-learning/machine-learning-excersises/ex1/ex1_multi.m",
+		"/Users/kkuj/Workspace/coursera-machine-learning/machine-learning-excersises/ex1/computeCostMulti.m",
+		"/Users/kkuj/Workspace/coursera-machine-learning/machine-learning-excersises/ex3/ex3weights.mat",
+		"/Users/kkuj/Workspace/coursera-machine-learning/machine-learning-excersises/ex3.pdf",
+		"/Users/kkuj/Workspace/coursera-machine-learning/machine-learning-excersises/ex2/mapFeature.m",
+		"/Users/kkuj/Workspace/coursera-machine-learning/machine-learning-excersises/ex1/gradientDescent.m",
+		"/Users/kkuj/Workspace/coursera-machine-learning/machine-learning-excersises/ex2/sigmoid.m",
+		"/Users/kkuj/Workspace/coursera-machine-learning/machine-learning-excersises/ex1/computeCost.m",
+		"/Users/kkuj/Workspace/coursera-machine-learning/machine-learning-excersises/ex1/gradientDescentMulti.m",
+		"/Users/kkuj/Workspace/coursera-machine-learning/machine-learning-excersises/ex1/featureNormalize.m",
+		"/Users/kkuj/Workspace/coursera-machine-learning/machine-learning-excersises/ex1/normalEqn.m",
+		"/Users/kkuj/Workspace/coursera-machine-learning/machine-learning-excersises/ex1/plotData.m",
+		"/Users/kkuj/Workspace/coursera-machine-learning/machine-learning-excersises/ex1.pdf",
+		"/Users/kkuj/Workspace/coursera-machine-learning/machine-learning-excersises/ex1/submit.m",
+		"/Users/kkuj/Workspace/coursera-machine-learning/machine-learning-excersises/ex1/lib/jsonlab/README.txt",
+		"/Users/kkuj/Workspace/coursera-machine-learning/machine-learning-excersises/ex1/lib/jsonlab/loadjson.m",
+		"/Users/kkuj/Workspace/coursera-machine-learning/machine-learning-excersises/ML_Octave_400_patch/lib/jsonlab/loadjson.m",
+		"/Users/kkuj/Workspace/Machine Learning/machine-learning-ex1/ex1/ex1.m",
+		"/Users/kkuj/Workspace/Machine Learning/Vagrant Machine/Readme.rtf",
+		"/Users/kkuj/Workspace/Machine Learning/machine-learning-ex1/ex1/warmUpExercise.m",
+		"/Users/kkuj/Workspace/Machine Learning/machine-learning-ex1/ex1/ex1_multi.m",
+		"/Users/kkuj/Workspace/Machine Learning/machine-learning-ex1/ex1/lib/submitWithConfiguration.m",
+		"/Users/kkuj/Library/Application Support/Sublime Text 3/Packages/User/Package Control.sublime-settings",
+		"/Users/kkuj/Library/Application Support/Sublime Text 3/Packages/Patch Apply/Patch Apply.py",
+		"/Users/kkuj/Library/Application Support/Sublime Text 3/Packages/Patch Apply/Patch Apply.sublime-settings",
+		"/Users/kkuj/Library/Application Support/Sublime Text 3/Packages/sublime-text-3-patch-apply/Main.sublime-menu",
+		"/Users/kkuj/Library/Application Support/Sublime Text 3/Packages/sublime-text-3-patch-apply/Patch Apply.py",
+		"/Users/kkuj/Library/Application Support/Sublime Text 3/Packages/User/Patch Apply.sublime-settings",
+		"/Users/kkuj/Workspace/audio-batch-processor/src/abp/cli.py",
+		"/Users/kkuj/Workspace/talktoyourapp/env.local.sh",
+		"/Users/kkuj/Workspace/talktoyourapp/participants/views.py",
+		"/Users/kkuj/Workspace/talktoyourapp/participants/admin.py",
+		"/Users/kkuj/Workspace/talktoyourapp/ivr/views.py",
+		"/Users/kkuj/Workspace/talktoyourapp/ivr/utils.py",
+		"/Users/kkuj/Workspace/talktoyourapp/participants/models.py",
+		"/Users/kkuj/Workspace/talktoyourapp/questions/models.py",
+		"/Users/kkuj/.virtualenvs/talk/lib/python3.4/site-packages/django/shortcuts.py",
+		"/Users/kkuj/Workspace/talktoyourapp/talktoyourapp/settings.py",
+		"/Users/kkuj/Workspace/talktoyourapp/home/jinja2/home/home.html",
+		"/Users/kkuj/Workspace/talktoyourapp/home/views.py",
+		"/Users/kkuj/.virtualenvs/talk/lib/python3.4/site-packages/django/template/loader.py",
+		"/Users/kkuj/.virtualenvs/talk/lib/python3.4/site-packages/twilio/rest/resources/calls.py",
+		"/Users/kkuj/Workspace/talktoyourapp/ivr/urls.py",
+		"/Users/kkuj/.virtualenvs/talk/lib/python3.4/site-packages/django/http/response.py",
+		"/Users/kkuj/Workspace/talktoyourapp/ivr/admin.py",
+		"/Users/kkuj/Workspace/talktoyourapp/ivr/models.py",
+		"/Users/kkuj/Workspace/talktoyourapp/talktoyourapp/urls.py",
+		"/Users/kkuj/.virtualenvs/talk/lib/python3.4/site-packages/django/db/models/fields/__init__.py",
+		"/Users/kkuj/.virtualenvs/talk/lib/python3.4/site-packages/django/contrib/admin/filters.py",
+		"/Users/kkuj/Workspace/talktoyourapp/env.example.sh",
+		"/Users/kkuj/Workspace/talktoyourapp/participants/urls.py",
+		"/Users/kkuj/Workspace/talktoyourapp/questions/admin.py",
+		"/Users/kkuj/Workspace/talktoyourapp/requirements.txt",
+		"/Users/kkuj/.virtualenvs/talk/lib/python3.4/site-packages/django/db/models/base.py",
+		"/Users/kkuj/Workspace/talktoyourapp/.gitignore",
+		"/Users/kkuj/Workspace/talktoyourapp/static/assets/css/main.css",
+		"/Users/kkuj/Workspace/talktoyourapp/README.md",
+		"/Users/kkuj/Workspace/talktoyourapp/talktoyourapp/jinja2.py",
+		"/Users/kkuj/Workspace/talktoyourapp/talktoyourapp/settings_prod.py",
+		"/Users/kkuj/Workspace/talktoyourapp/talktoyourapp/wsgi.py",
+		"/Users/kkuj/Workspace/talktoyourapp/__init__.py",
+		"/Users/kkuj/.virtualenvs/talk/lib/python3.4/site-packages/django/db/models/fields/related.py",
+		"/Users/kkuj/.virtualenvs/talk/lib/python3.4/site-packages/django/db/models/__init__.py",
+		"/Users/kkuj/Workspace/Sublime Text Projects/talktoyourapp.sublime-project",
+		"/Users/kkuj/Workspace/Porozmawiaj ze swoja aplikacja/book/INSTALL.md",
+		"/Users/kkuj/Workspace/talktoyourapp/runtime.txt",
+		"/Users/kkuj/Workspace/Porozmawiaj ze swoja aplikacja/book/IVR_providers_comparision (www.tablesgenerator.com).tgn",
+		"/Users/kkuj/Documents/troublemaker",
+		"/Users/kkuj/Workspace/cookiecutter-sublime-text-3-plugin/LICENSE",
+		"/Users/kkuj/Workspace/PyCon book/2015/presentations/porozmawiaj_ze_swoja_aplikacja",
+		"/Users/kkuj/Workspace/PyCon book/2015/presentations/porozmawiaj_ze_swoja_aplikacja.md",
+		"/Users/kkuj/Library/Application Support/Sublime Text 3/Packages/sublime-text-git/repo.py",
+		"/Users/kkuj/Library/Application Support/Sublime Text 3/Packages/User/Default (OSX).sublime-keymap",
+		"/Users/kkuj/Library/Application Support/Sublime Text 3/Packages/My Awesome/Main.sublime-menu",
+		"/Users/kkuj/Library/Application Support/Sublime Text 3/Packages/My Awesome/Default.sublime-commands",
+		"/Users/kkuj/Library/Application Support/Sublime Text 3/Packages/My Awesome/Default (OSX).sublime-keymap"
+	],
+	"find":
+	{
+		"height": 22.0
+	},
+	"find_in_files":
+	{
+		"height": 93.0,
+		"where_history":
+		[
+			"",
+			"*.m",
+			" ",
+			"",
+			"tests/*.py",
+			"*.py",
+			"",
+			"*.js",
+			"*.py",
+			"",
+			"*.js",
+			"",
+			"*.py",
+			".py",
+			"",
+			"*.css",
+			"",
+			"*.py",
+			"",
+			"*.css",
+			"css",
+			"",
+			"*.js",
+			"urls.py",
+			"*.js",
+			"",
+			"*.py",
+			"",
+			"*.py",
+			"",
+			"*.html",
+			".html",
+			"",
+			"*.html",
+			"",
+			"*.html",
+			"",
+			"views.py",
+			"",
+			"*.py",
+			"",
+			"*.py",
+			""
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+			"waitfordb",
+			"checking connection",
+			"changing ownership",
+			"entry",
+			"bashrc",
+			"export PS1",
+			"runutils.py",
+			"shell",
+			"rosetta",
+			"ENTRYPOINT",
+			"redirecting log output to logging collector process",
+			"find",
+			"filter",
+			"for i=",
+			"if",
+			"for",
+			"trainLinearReg",
+			"echo",
+			"fminunc",
+			"for i=1",
+			"fminunc",
+			"costFunctionReg",
+			"fminunc",
+			"theta",
+			"Theta1",
+			"log(",
+			"for",
+			"if",
+			"for",
+			"initial_theta",
+			"predict",
+			"sigmoid",
+			"plot(1:50",
+			"plot(1:50, J2(1:50), ‘r’);",
+			"sprintf",
+			"str=[str str0(pos0(i)+1:pos(i)-1) sprintf('_0x%X_',str0(pos(i)))];",
+			"submitWithConfiguration",
+			"get_approved_renames",
+			"tabulate_renames",
+			"tabulate_values",
+			"pdb",
+			"tabulate_renames",
+			"'id3'",
+			"confirm-all",
+			"welcome",
+			"require_http_methods",
+			"givenanswer",
+			"128",
+			"correct",
+			"eś",
+			"Brawo",
+			"phone_number",
+			"PHONE",
+			"DEBUG",
+			".get",
+			".get(",
+			"TWILIO_CALLING_NUMBER",
+			"TwilioRestClient",
+			"is_null",
+			"initiate_call",
+			"receive_call",
+			"LOG",
+			"TEMPL",
+			"Manager",
+			".objects",
+			"objects = ",
+			"service-item",
+			"<a name",
+			"50px",
+			"min-",
+			"meia",
+			"50px",
+			"home",
+			"name=\"]",
+			"a name",
+			"Montserrat",
+			"Corporal",
+			"plivio",
+			"\\n",
+			"remote",
+			"rpd",
+			"cwd",
+			"edit",
+			"create_output_panel",
+			"message_dialog",
+			"extra_En",
+			"env",
+			"env=",
+			"data for",
+			"> <",
+			"[\\s]+",
+			"\\n",
+			"[\\s]+",
+			"\\n",
+			"  ",
+			"Audrey Roy",
+			"log",
+			"settings",
+			"from_pat",
+			"from_path",
+			"setup.cfg",
+			"count",
+			"View",
+			"sdfsdf",
+			"%h",
+			"25de",
+			"git",
+			"pipelin",
+			"static",
+			"connect_s3",
+			"S3Connection",
+			"pdb.set_trace()",
+			"pdb.set_Trace()",
+			"AWSAuthConnection)",
+			"AWSAuthConnection(",
+			"AWSAuthConnection",
+			"MYSQL_NAME",
+			"DATABASES = {\n",
+			"remote_pdb",
+			"remote pdb",
+			"analyserwizzard",
+			"analyserwizzard/load",
+			"analyserwizzard",
+			"StashStorage",
+			"isinsta",
+			"assert",
+			"CopyFail",
+			"CopyFailure"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+			"plivo",
+			"><",
+			" ",
+			"",
+			"repositories",
+			"all_repositories",
+			"",
+			"sphinx-build\" -c src/aae_core/docs",
+			"    ",
+			"\\ndef",
+			"():",
+			"(clean_warnings):",
+			"clean_warnings"
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"selected": 6,
+			"sheets":
+			[
+				{
+					"buffer": 0,
+					"file": "docker-compose.yml",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1256,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								104,
+								104
+							]
+						],
+						"settings":
+						{
+							"BracketHighlighterBusy": false,
+							"bh_regions":
+							[
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close",
+								"bh_angle_content",
+								"bh_round",
+								"bh_round_center",
+								"bh_round_open",
+								"bh_round_close",
+								"bh_round_content",
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close",
+								"bh_default_content",
+								"bh_c_define",
+								"bh_c_define_center",
+								"bh_c_define_open",
+								"bh_c_define_close",
+								"bh_c_define_content",
+								"bh_double_quote",
+								"bh_double_quote_center",
+								"bh_double_quote_open",
+								"bh_double_quote_close",
+								"bh_double_quote_content",
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close",
+								"bh_tag_content",
+								"bh_curly",
+								"bh_curly_center",
+								"bh_curly_open",
+								"bh_curly_close",
+								"bh_curly_content",
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
+								"bh_square_content",
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
+								"bh_unmatched_content",
+								"bh_single_quote",
+								"bh_single_quote_center",
+								"bh_single_quote_open",
+								"bh_single_quote_close",
+								"bh_single_quote_content",
+								"bh_regex",
+								"bh_regex_center",
+								"bh_regex_open",
+								"bh_regex_close",
+								"bh_regex_content"
+							],
+							"syntax": "Packages/YAML/YAML.sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 6,
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "buildall.sh",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 901,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								871,
+								894
+							]
+						],
+						"settings":
+						{
+							"BracketHighlighterBusy": false,
+							"bh_regions":
+							[
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close",
+								"bh_angle_content",
+								"bh_round",
+								"bh_round_center",
+								"bh_round_open",
+								"bh_round_close",
+								"bh_round_content",
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close",
+								"bh_default_content",
+								"bh_c_define",
+								"bh_c_define_center",
+								"bh_c_define_open",
+								"bh_c_define_close",
+								"bh_c_define_content",
+								"bh_double_quote",
+								"bh_double_quote_center",
+								"bh_double_quote_open",
+								"bh_double_quote_close",
+								"bh_double_quote_content",
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close",
+								"bh_tag_content",
+								"bh_curly",
+								"bh_curly_center",
+								"bh_curly_open",
+								"bh_curly_close",
+								"bh_curly_content",
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
+								"bh_square_content",
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
+								"bh_unmatched_content",
+								"bh_single_quote",
+								"bh_single_quote_center",
+								"bh_single_quote_open",
+								"bh_single_quote_close",
+								"bh_single_quote_content",
+								"bh_regex",
+								"bh_regex_center",
+								"bh_regex_open",
+								"bh_regex_close",
+								"bh_regex_content"
+							],
+							"syntax": "Packages/ShellScript/Shell-Unix-Generic.sublime-syntax"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 2,
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "data-docker-compose.yml",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 298,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								40,
+								20
+							]
+						],
+						"settings":
+						{
+							"BracketHighlighterBusy": false,
+							"bh_regions":
+							[
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close",
+								"bh_angle_content",
+								"bh_round",
+								"bh_round_center",
+								"bh_round_open",
+								"bh_round_close",
+								"bh_round_content",
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close",
+								"bh_default_content",
+								"bh_c_define",
+								"bh_c_define_center",
+								"bh_c_define_open",
+								"bh_c_define_close",
+								"bh_c_define_content",
+								"bh_double_quote",
+								"bh_double_quote_center",
+								"bh_double_quote_open",
+								"bh_double_quote_close",
+								"bh_double_quote_content",
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close",
+								"bh_tag_content",
+								"bh_curly",
+								"bh_curly_center",
+								"bh_curly_open",
+								"bh_curly_close",
+								"bh_curly_content",
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
+								"bh_square_content",
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
+								"bh_unmatched_content",
+								"bh_single_quote",
+								"bh_single_quote_center",
+								"bh_single_quote_open",
+								"bh_single_quote_close",
+								"bh_single_quote_content",
+								"bh_regex",
+								"bh_regex_center",
+								"bh_regex_open",
+								"bh_regex_close",
+								"bh_regex_content"
+							],
+							"syntax": "Packages/YAML/YAML.sublime-syntax"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "docker/django-python3/config/run.py",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 2276,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								875,
+								875
+							]
+						],
+						"settings":
+						{
+							"BracketHighlighterBusy": false,
+							"bh_regions":
+							[
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close",
+								"bh_angle_content",
+								"bh_round",
+								"bh_round_center",
+								"bh_round_open",
+								"bh_round_close",
+								"bh_round_content",
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close",
+								"bh_default_content",
+								"bh_c_define",
+								"bh_c_define_center",
+								"bh_c_define_open",
+								"bh_c_define_close",
+								"bh_c_define_content",
+								"bh_double_quote",
+								"bh_double_quote_center",
+								"bh_double_quote_open",
+								"bh_double_quote_close",
+								"bh_double_quote_content",
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close",
+								"bh_tag_content",
+								"bh_curly",
+								"bh_curly_center",
+								"bh_curly_open",
+								"bh_curly_close",
+								"bh_curly_content",
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
+								"bh_square_content",
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
+								"bh_unmatched_content",
+								"bh_single_quote",
+								"bh_single_quote_center",
+								"bh_single_quote_open",
+								"bh_single_quote_close",
+								"bh_single_quote_content",
+								"bh_regex",
+								"bh_regex_center",
+								"bh_regex_open",
+								"bh_regex_close",
+								"bh_regex_content"
+							],
+							"syntax": "Packages/Python Improved/PythonImproved.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 494.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 3,
+					"type": "text"
+				},
+				{
+					"buffer": 4,
+					"file": "src/podcast/admin.py",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 706,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								320,
+								386
+							]
+						],
+						"settings":
+						{
+							"BracketHighlighterBusy": false,
+							"bh_regions":
+							[
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close",
+								"bh_angle_content",
+								"bh_round",
+								"bh_round_center",
+								"bh_round_open",
+								"bh_round_close",
+								"bh_round_content",
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close",
+								"bh_default_content",
+								"bh_c_define",
+								"bh_c_define_center",
+								"bh_c_define_open",
+								"bh_c_define_close",
+								"bh_c_define_content",
+								"bh_double_quote",
+								"bh_double_quote_center",
+								"bh_double_quote_open",
+								"bh_double_quote_close",
+								"bh_double_quote_content",
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close",
+								"bh_tag_content",
+								"bh_curly",
+								"bh_curly_center",
+								"bh_curly_open",
+								"bh_curly_close",
+								"bh_curly_content",
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
+								"bh_square_content",
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
+								"bh_unmatched_content",
+								"bh_single_quote",
+								"bh_single_quote_center",
+								"bh_single_quote_open",
+								"bh_single_quote_close",
+								"bh_single_quote_content",
+								"bh_regex",
+								"bh_regex_center",
+								"bh_regex_open",
+								"bh_regex_close",
+								"bh_regex_content"
+							],
+							"syntax": "Packages/Python Improved/PythonImproved.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 7,
+					"type": "text"
+				},
+				{
+					"buffer": 5,
+					"file": "src/podcast/models.py",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 3309,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								3216,
+								3216
+							]
+						],
+						"settings":
+						{
+							"BracketHighlighterBusy": false,
+							"bh_regions":
+							[
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close",
+								"bh_angle_content",
+								"bh_round",
+								"bh_round_center",
+								"bh_round_open",
+								"bh_round_close",
+								"bh_round_content",
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close",
+								"bh_default_content",
+								"bh_c_define",
+								"bh_c_define_center",
+								"bh_c_define_open",
+								"bh_c_define_close",
+								"bh_c_define_content",
+								"bh_double_quote",
+								"bh_double_quote_center",
+								"bh_double_quote_open",
+								"bh_double_quote_close",
+								"bh_double_quote_content",
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close",
+								"bh_tag_content",
+								"bh_curly",
+								"bh_curly_center",
+								"bh_curly_open",
+								"bh_curly_close",
+								"bh_curly_content",
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
+								"bh_square_content",
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
+								"bh_unmatched_content",
+								"bh_single_quote",
+								"bh_single_quote_center",
+								"bh_single_quote_open",
+								"bh_single_quote_close",
+								"bh_single_quote_content",
+								"bh_regex",
+								"bh_regex_center",
+								"bh_regex_open",
+								"bh_regex_close",
+								"bh_regex_content"
+							],
+							"syntax": "Packages/Python Improved/PythonImproved.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 731.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 5,
+					"type": "text"
+				},
+				{
+					"buffer": 6,
+					"file": "docker/django-python3/Dockerfile",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 581,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								290,
+								290
+							]
+						],
+						"settings":
+						{
+							"BracketHighlighterBusy": false,
+							"bh_regions":
+							[
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close",
+								"bh_angle_content",
+								"bh_round",
+								"bh_round_center",
+								"bh_round_open",
+								"bh_round_close",
+								"bh_round_content",
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close",
+								"bh_default_content",
+								"bh_c_define",
+								"bh_c_define_center",
+								"bh_c_define_open",
+								"bh_c_define_close",
+								"bh_c_define_content",
+								"bh_double_quote",
+								"bh_double_quote_center",
+								"bh_double_quote_open",
+								"bh_double_quote_close",
+								"bh_double_quote_content",
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close",
+								"bh_tag_content",
+								"bh_curly",
+								"bh_curly_center",
+								"bh_curly_open",
+								"bh_curly_close",
+								"bh_curly_content",
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
+								"bh_square_content",
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
+								"bh_unmatched_content",
+								"bh_single_quote",
+								"bh_single_quote_center",
+								"bh_single_quote_open",
+								"bh_single_quote_close",
+								"bh_single_quote_content",
+								"bh_regex",
+								"bh_regex_center",
+								"bh_regex_open",
+								"bh_regex_close",
+								"bh_regex_content"
+							],
+							"syntax": "Packages/Dockerfile Syntax Highlighting/Syntaxes/Dockerfile.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				},
+				{
+					"buffer": 7,
+					"file": "src/podcast/management/commands/scrap.py",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 845,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								156,
+								156
+							]
+						],
+						"settings":
+						{
+							"BracketHighlighterBusy": false,
+							"bh_regions":
+							[
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close",
+								"bh_angle_content",
+								"bh_round",
+								"bh_round_center",
+								"bh_round_open",
+								"bh_round_close",
+								"bh_round_content",
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close",
+								"bh_default_content",
+								"bh_c_define",
+								"bh_c_define_center",
+								"bh_c_define_open",
+								"bh_c_define_close",
+								"bh_c_define_content",
+								"bh_double_quote",
+								"bh_double_quote_center",
+								"bh_double_quote_open",
+								"bh_double_quote_close",
+								"bh_double_quote_content",
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close",
+								"bh_tag_content",
+								"bh_curly",
+								"bh_curly_center",
+								"bh_curly_open",
+								"bh_curly_close",
+								"bh_curly_content",
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
+								"bh_square_content",
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
+								"bh_unmatched_content",
+								"bh_single_quote",
+								"bh_single_quote_center",
+								"bh_single_quote_open",
+								"bh_single_quote_close",
+								"bh_single_quote_content",
+								"bh_regex",
+								"bh_regex_center",
+								"bh_regex_open",
+								"bh_regex_close",
+								"bh_regex_content"
+							],
+							"open_with_edit": true,
+							"syntax": "Packages/Python Improved/PythonImproved.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 4,
+					"type": "text"
+				}
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 22.0
+	},
+	"input":
+	{
+		"height": 30.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.Data formatter":
+	{
+		"height": 0.0
+	},
+	"output.anaconda_vagrant":
+	{
+		"height": 88.0
+	},
+	"output.dataformatter":
+	{
+		"height": 0.0
+	},
+	"output.find_results":
+	{
+		"height": 0.0
+	},
+	"output.git":
+	{
+		"height": 366.0
+	},
+	"output.help_panel":
+	{
+		"height": 209.0
+	},
+	"output.log_view":
+	{
+		"height": 0.0
+	},
+	"pinned_build_system": "",
+	"project": "podcast_scraper.sublime-project",
+	"replace":
+	{
+		"height": 66.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+			[
+				"data-docker-compose.yml",
+				"data-docker-compose.yml"
+			],
+			[
+				"bui",
+				"buildall.sh"
+			],
+			[
+				"docker-",
+				"docker-compose.yml"
+			],
+			[
+				"admin",
+				"src/podcast/admin.py"
+			],
+			[
+				"docker-com",
+				"docker-compose.yml"
+			],
+			[
+				"dokcer/dja",
+				"docker/django-python3/Dockerfile"
+			],
+			[
+				"settin",
+				"src/core/settings.py"
+			],
+			[
+				"runutils.py",
+				"docker/base/runutils.py"
+			],
+			[
+				"dockerfile",
+				"docker/django-python3/Dockerfile"
+			],
+			[
+				"run.py",
+				"docker/django-python3/config/run.py"
+			],
+			[
+				"rosetta",
+				"src/core/templates/rosetta/base.html"
+			],
+			[
+				"settings.p",
+				"src/core/settings.py"
+			],
+			[
+				"ex7",
+				"machine-learning-excersises/ex7/ex7.m"
+			],
+			[
+				"findc",
+				"machine-learning-excersises/ex7/findClosestCentroids.m"
+			],
+			[
+				"emailfeatures",
+				"machine-learning-excersises/ex6/emailFeatures.m"
+			],
+			[
+				"visualizeboundary.m",
+				"machine-learning-excersises/ex6/visualizeBoundary.m"
+			],
+			[
+				"ex6",
+				"machine-learning-excersises/ex6/ex6.m"
+			],
+			[
+				"dataset3params.m",
+				"machine-learning-excersises/ex6/dataset3Params.m"
+			],
+			[
+				"regcost",
+				"machine-learning-excersises/ex2/costFunctionReg.m"
+			],
+			[
+				"ex4",
+				"machine-learning-excersises/ex4/ex4.m"
+			],
+			[
+				"costfunc",
+				"machine-learning-excersises/ex2/costFunction.m"
+			],
+			[
+				"costfin",
+				"machine-learning-excersises/ex2/costFunction.m"
+			],
+			[
+				"cli.p",
+				"src/abp/cli.py"
+			],
+			[
+				"ur",
+				"ivr/urls.py"
+			],
+			[
+				"urls",
+				"ivr/urls.py"
+			],
+			[
+				"env.lo",
+				"env.local.sh"
+			],
+			[
+				"views",
+				"ivr/views.py"
+			],
+			[
+				"view.",
+				"participants/views.py"
+			],
+			[
+				"models",
+				"participants/models.py"
+			],
+			[
+				"view",
+				"ivr/views.py"
+			],
+			[
+				"part/vi",
+				"participants/views.py"
+			],
+			[
+				"settings",
+				"talktoyourapp/settings.py"
+			],
+			[
+				"view.p",
+				"home/views.py"
+			],
+			[
+				".html",
+				"home/jinja2/home/home.html"
+			],
+			[
+				"admin.p",
+				"participants/admin.py"
+			],
+			[
+				"env",
+				"env.local.sh"
+			],
+			[
+				"adminp",
+				"ivr/admin.py"
+			],
+			[
+				"pa/mode",
+				"participants/models.py"
+			],
+			[
+				"ivrur",
+				"ivr/urls.py"
+			],
+			[
+				"ivr/view",
+				"ivr/views.py"
+			],
+			[
+				"env.",
+				"env.local.sh"
+			],
+			[
+				"urls.p",
+				"ivr/urls.py"
+			],
+			[
+				"parti/ad",
+				"participants/admin.py"
+			],
+			[
+				"ivr/vi",
+				"ivr/views.py"
+			],
+			[
+				"model",
+				"participants/models.py"
+			],
+			[
+				"mode",
+				"questions/models.py"
+			],
+			[
+				"ivr/mode",
+				"ivr/models.py"
+			],
+			[
+				"part/ur",
+				"participants/urls.py"
+			],
+			[
+				"url",
+				"talktoyourapp/urls.py"
+			],
+			[
+				"en.",
+				"env.example.sh"
+			],
+			[
+				"reque",
+				"requirements.txt"
+			],
+			[
+				"parti/mode",
+				"participants/models.py"
+			],
+			[
+				"giti",
+				".gitignore"
+			],
+			[
+				".gi",
+				".gitignore"
+			],
+			[
+				".",
+				".gitignore"
+			],
+			[
+				"main.cs",
+				"static/assets/css/main.css"
+			],
+			[
+				"home",
+				"home/jinja2/home/home.html"
+			],
+			[
+				"requ",
+				"requirements.txt"
+			],
+			[
+				"sett",
+				"talktoyourapp/settings_prod.py"
+			],
+			[
+				"wsgi",
+				"talktoyourapp/wsgi.py"
+			],
+			[
+				"home/",
+				"home/views.py"
+			],
+			[
+				".git",
+				".gitignore"
+			],
+			[
+				"setting",
+				"talktoyourapp/settings.py"
+			],
+			[
+				"deamon",
+				"sublime_jedi/daemon.py"
+			],
+			[
+				"dea",
+				"sublime_jedi/daemon.py"
+			],
+			[
+				"ma",
+				"{{cookiecutter.plugin_name}}/Main.sublime-menu"
+			],
+			[
+				"main",
+				"Main.sublime-menu"
+			],
+			[
+				".xml",
+				"example.xml"
+			],
+			[
+				"ut",
+				"util.py"
+			],
+			[
+				"ex",
+				"example.json"
+			],
+			[
+				".js",
+				"example.json"
+			],
+			[
+				"hist",
+				"history.py"
+			],
+			[
+				"is",
+				"isort/isort.py"
+			],
+			[
+				"add.",
+				"add.py"
+			],
+			[
+				"viw",
+				"checkmyride/checkmyride/views.py"
+			],
+			[
+				"bas.p",
+				"mycup/mycup/settings/base.py"
+			],
+			[
+				"con.json",
+				"conf_example.json"
+			],
+			[
+				".json",
+				"conf_example.json"
+			],
+			[
+				"base",
+				"requirements/base.txt"
+			],
+			[
+				"herok",
+				"requirements/heroku.txt"
+			],
+			[
+				"requet",
+				"requirements.txt"
+			],
+			[
+				"base.py",
+				"mycup/mycup/settings/base.py"
+			],
+			[
+				"settings/lc",
+				"mycup/mycup/settings/local.py"
+			],
+			[
+				"mana",
+				"manage.py"
+			],
+			[
+				"request/her",
+				"requirements/heroku.txt"
+			],
+			[
+				"base.",
+				"buildout_base.cfg"
+			],
+			[
+				"s3/connec",
+				"eggs/boto-2.38.0-py2.7.egg/boto/s3/connection.py"
+			],
+			[
+				"settinbase.py",
+				"src/checkmyride/checkmyride/settings/base.py"
+			],
+			[
+				"devem",
+				"src/checkmyride/checkmyride/settings/development.py"
+			],
+			[
+				"settins/bas",
+				"src/checkmyride/checkmyride/settings/base.py"
+			],
+			[
+				"boto/s3/buck",
+				"eggs/boto-2.38.0-py2.7.egg/boto/s3/bucket.py"
+			],
+			[
+				"checksettings.py",
+				"src/checkmyride/checkmyride/settings/base.py"
+			],
+			[
+				"contentrepo/url",
+				"src/aaeweb/contentrepo/urls.py"
+			],
+			[
+				"views.py",
+				"src/aaeweb/contentrepo/views.py"
+			],
+			[
+				".py",
+				"tests/test_unit/test_content_repository/aae_content_cache/development/parse/test_parser_.py"
+			],
+			[
+				"apach22",
+				"src/aaeweb/apache/aaeweb.apache22.conf"
+			],
+			[
+				"apache",
+				"src/aaeweb/apache/aaeweb.apache24.conf"
+			],
+			[
+				"stas",
+				"src/aaeweb/static/aaeweb/stash.js"
+			],
+			[
+				"eslint",
+				"src/aaeweb/.eslintrc"
+			],
+			[
+				"super/changelog",
+				"pkg/supervisor-3.0/debian/changelog"
+			],
+			[
+				"options",
+				"pkg/supervisor-3.0/supervisor/options.py"
+			],
+			[
+				"xmlrpc_",
+				"pkg/supervisor-3.0/supervisor/medusa/xmlrpc_handler.py"
+			],
+			[
+				"medusa/debian/rules",
+				"pkg/supervisor-3.0/supervisor/medusa/debian/rules"
+			],
+			[
+				"rpcin",
+				"pkg/supervisor-3.0/supervisor/rpcinterface.py"
+			],
+			[
+				"test_aae",
+				"tests/test_func/test_aae_plugin.py"
+			],
+			[
+				"pipe",
+				"src/aae_core/engine/pipeline.py"
+			],
+			[
+				"contentrepo.js",
+				"src/aaeweb/static/aaeweb/content_repo.js"
+			],
+			[
+				"test.sh",
+				"test.sh"
+			],
+			[
+				"layer_",
+				"src/aae_core/utility/layer_fs.py"
+			],
+			[
+				"pipel",
+				"src/aae_core/engine/pipeline.py"
+			],
+			[
+				"base.h",
+				"src/aaeweb/templates/base.html"
+			],
+			[
+				"edit_pan.js",
+				"src/aaeweb/static/aaeweb/widgets/editor_panes.js"
+			],
+			[
+				"repo/view.",
+				"src/aaeweb/contentrepo/views.py"
+			],
+			[
+				"layer_f",
+				"src/aae_core/utility/layer_fs.py"
+			],
+			[
+				"src/aae_core/finding/parser.py",
+				"src/aae_core/finding/parser.py"
+			],
+			[
+				"service/view",
+				"src/aae_core/service/views.py"
+			],
+			[
+				"make_de",
+				"make_dev_setup.sh"
+			],
+			[
+				"make_dev",
+				"make_dev_setup.sh"
+			],
+			[
+				"parser",
+				"src/aae_core/finding/parser.py"
+			],
+			[
+				"finding/pars",
+				"src/aae_core/finding/parser.py"
+			],
+			[
+				"test_stream",
+				"tests/test_unit/test_streaming_finding_parser.py"
+			],
+			[
+				"test_strea",
+				"tests/test_unit/test_streaming_block_parser.py"
+			],
+			[
+				"overview-",
+				"docs/content/repository/overview-ui.rst"
+			],
+			[
+				"overviw",
+				"pkg/platform/opt/aae/platform/docs/overview.html"
+			],
+			[
+				"index.rst",
+				"docs/index.rst"
+			],
+			[
+				"aae-ui",
+				"docs/aae-ui.rst"
+			],
+			[
+				"erro",
+				"docs/tools/errors-ui.rst"
+			],
+			[
+				"tools/errors-ui",
+				"docs/tools/errors-ui.rst"
+			]
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_symbol":
+	{
+		"height": 375.0,
+		"last_filter": "",
+		"selected_items":
+		[
+			[
+				"an",
+				"answer"
+			],
+			[
+				"regis",
+				"register"
+			],
+			[
+				"regi",
+				"register"
+			],
+			[
+				"answer",
+				"answer"
+			],
+			[
+				"tim",
+				"Timer"
+			],
+			[
+				"timer",
+				"Timer"
+			],
+			[
+				"on_c",
+				"on_call_end"
+			],
+			[
+				"gbran",
+				"GitDeleteBranchCommand"
+			],
+			[
+				"",
+				"DataFormatterJsonCommand"
+			],
+			[
+				"is",
+				"IsortCommand"
+			],
+			[
+				"isort",
+				"IsortCommand"
+			],
+			[
+				"server_name",
+				"server_name"
+			],
+			[
+				"migrate ",
+				"emit_post_migrate"
+			],
+			[
+				"get_parsers_for_files",
+				"get_parsers_for_files"
+			],
+			[
+				"lex",
+				"lex"
+			],
+			[
+				"user_permissions",
+				"user_permissions"
+			],
+			[
+				"Singl",
+				"SingleInstance"
+			],
+			[
+				"SingleInstance",
+				"SingleInstance"
+			],
+			[
+				"load",
+				"load"
+			],
+			[
+				"on_error",
+				"on_error"
+			],
+			[
+				"build_content_docs",
+				"build_content_docs"
+			],
+			[
+				"start_process",
+				"start_process"
+			],
+			[
+				"Request",
+				"Request"
+			],
+			[
+				"terminat_",
+				"termination_handling"
+			],
+			[
+				"Single",
+				"SingleInstance"
+			],
+			[
+				"tmpd",
+				"TmpDir"
+			],
+			[
+				"tmpdir",
+				"TmpDir"
+			],
+			[
+				"TmpD",
+				"TmpDir"
+			],
+			[
+				"TmpDIr",
+				"TmpDir"
+			],
+			[
+				"singl",
+				"SingleInstance"
+			]
+		],
+		"width": 378.0
+	},
+	"selected_group": 0,
+	"settings":
+	{
+	},
+	"show_minimap": true,
+	"show_open_files": false,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 326.0,
+	"status_bar_visible": true,
+	"template_settings":
+	{
+		"max_columns": 2
+	}
+}
