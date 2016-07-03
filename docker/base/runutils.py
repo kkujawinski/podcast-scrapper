@@ -41,8 +41,8 @@ def run_cmd(args, message=None, user=None):
 
     _setuser = setuser(user) if user else None
     try:
-        subprocess.check_output(
-            args, stderr=subprocess.STDOUT, preexec_fn=_setuser)
+        subprocess.call(args, stderr=subprocess.STDOUT,
+                        preexec_fn=_setuser)
     except subprocess.CalledProcessError as e:
         if message:
             click.secho(message + ' finish ✘', fg='red')

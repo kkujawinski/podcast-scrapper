@@ -1,6 +1,10 @@
 *.py[oc]
 __pycache__
 
+*.sublime-project
+*.sublime-workspace
+src/geckodriver.log
+
 env.txt
 container_shared/*
 !container_shared/.init

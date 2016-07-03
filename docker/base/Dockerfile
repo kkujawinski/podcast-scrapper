@@ -5,6 +5,7 @@ RUN apt-get update && apt-get -y upgrade
 ENV LANG C.UTF-8
 RUN set -x && apt-get update && \
               apt-get install -y --no-install-recommends \
+                software-properties-common \
                 python3 \
                 ca-certificates \
                 python3-pip \

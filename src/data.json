@@ -1,0 +1,115 @@
+[
+{
+    "model": "podcast.podcastscrapingsteps",
+    "pk": 1,
+    "fields": {
+        "name": "Polskie Radio",
+        "steps": {
+            "items-next_page": "//a[@id='ctl00_nextAnchor']",
+            "items-store": {
+                "description": [
+                    "(//div[contains(@class, 'content')])[1]//p",
+                    {
+                        "type": "join",
+                        "sep": "\n"
+                    }
+                ],
+                "title": "(//h1[@class='title'])[1]",
+                "pub_date": [
+                    "//span[@id='datetime2' or @class='time']",
+                    {
+                        "type": "regex",
+                        "search": "(\\d+)\\.(\\d+).(\\d+)(.*)",
+                        "replace": "\\3-\\2-\\1\\4"
+                    }
+                ],
+                "audio_duration": [
+                    "(//div[contains(@class, 'audio')]//span[@class='time'])[1]",
+                    {
+                        "type": "timedelta",
+                        "format": "(?P<minutes>\\d{2,3})'(?P<seconds>\\d{2})"
+                    }
+                ],
+                "audio_url": {
+                    "type": "OR",
+                    "items": [
+                        [
+                            "(//div[contains(@class, 'audio')]//span[contains(@class, 'play')])[1]/@data-media",
+                            {
+                                "type": "json",
+                                "value": "http:{file}"
+                            }
+                        ],
+                        [
+                            {
+                                "type": "source"
+                            },
+                            "//aside[@id='box-sounds']/script/text()",
+                            {
+                                "type": "regex",
+                                "search": "source: '([^']+)"
+                            },
+                            {
+                                "type": "format",
+                                "format": "http:{0}"
+                            }
+                        ]
+                    ]
+                }
+            },
+            "store": {
+                "language": {
+                    "type": "const",
+                    "value": "pl"
+                },
+                "title": "//div[@id='ramowka']//h2",
+                "description": [
+                    "//div[contains(@class, 'detailsContainer')]//article//p[position()<3]",
+                    {
+                        "type": "join",
+                        "sep": "\n"
+                    }
+                ],
+                "image_url": [
+                    "//span[@id='ctl00_ctl00_ctl00_ContentPlaceHolder1_ContentPlaceHolder1_Section05_ctl01_backgroundImg']/@style",
+                    {
+                        "type": "regex",
+                        "search": ".+url\\(([^)]+).+",
+                        "replace": "http:\\1"
+                    }
+                ]
+            },
+            "items-steps": [
+                "//article/a/@href"
+            ]
+        }
+    }
+},
+{
+    "model": "podcast.podcastscrapingconfiguration",
+    "pk": 1,
+    "fields": {
+        "steps": 1,
+        "slug": "pr2/ten-caly-musical",
+        "start_url": "http://www.polskieradio.pl/8/3089,Ten-caly-musical"
+    }
+},
+{
+    "model": "auth.user",
+    "pk": 1,
+    "fields": {
+        "password": "pbkdf2_sha256$24000$jYvAe27x5POd$piNzxxIjcWqGsQlrZPx0GMXh65mKm8zmuhZK5W6PUO8=",
+        "last_login": "2016-06-26T16:53:45.022Z",
+        "is_superuser": true,
+        "username": "admin",
+        "first_name": "",
+        "last_name": "",
+        "email": "",
+        "is_staff": true,
+        "is_active": true,
+        "date_joined": "2016-06-26T16:53:39.472Z",
+        "groups": [],
+        "user_permissions": []
+    }
+}
+]

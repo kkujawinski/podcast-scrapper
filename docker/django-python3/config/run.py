@@ -31,14 +31,10 @@ def waitfordb(stopper):
             time.sleep(tick)
 
 
-
-
-
 # INIT: WILL RUN BEFORE ANY COMMAND AND START  #
 def init(stopper):
     ensure_dir('/data/logs/django', owner='developer', group='developer')
     ensure_dir('/data/static', owner='developer', group='developer')
-    
 
     if not stopper.stopped:
         if settings.DEBUG is False:
@@ -53,8 +49,6 @@ def init(stopper):
                     user='developer')
             with open("/data/.init", "a+") as f:
                 f.write('')
-
-        
 
 
 @click.group()
@@ -81,6 +75,11 @@ def start_uwsgi():
     start = ["uwsgi", "--ini", '/config/uwsgi.conf', '--post-buffering', '1']
     run_daemon(start, signal_to_send=signal.SIGQUIT, user='developer',
                waitfunc=waitfordb, initfunc=init)
+
+
+@run.command()
+def start_worker():
+    run_cmd(['django-admin.py', 'scrap'], user='developer')
 
 
 if __name__ == '__main__':

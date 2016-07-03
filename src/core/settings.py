@@ -125,6 +125,7 @@ DEBUG_TOOLBAR_CONFIG = {
     'SHOW_TOOLBAR_CALLBACK': lambda x: DEBUG,
 }
 
+LOGGING_CONFIG = None
 LOGGING = {
     'version': 1,
     'disable_existing_loggers': False,
@@ -140,7 +141,7 @@ LOGGING = {
     },
     'handlers': {
         'console': {
-            'level': 'INFO',
+            'level': getvar('LOG_LEVEL', 'INFO'),
             'filters': ['require_debug_true'],
             'class': 'logging.StreamHandler',
             'formatter': 'simple'
@@ -159,6 +160,10 @@ LOGGING = {
         },
     },
     'loggers': {
+        'podcast': {
+            'handlers': ['console'],
+            'level': 'DEBUG',
+        },
         'django': {
             'handlers': ['console', 'django_file'],
             'propagate': True,
@@ -175,6 +180,8 @@ LOGGING = {
         },
     }
 }
+import logging.config
+logging.config.dictConfig(LOGGING)
 
 ADMINS = [('admin', 'kamil@kujawinski.net'), ]
 EMAIL_SUBJECT_PREFIX = '[Django podcast_scraper] '

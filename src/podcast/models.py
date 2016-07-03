@@ -30,8 +30,6 @@ class PodcastScrapingSteps(models.Model):
 
 class PodcastScrapingConfiguration(models.Model):
     steps = models.ForeignKey('PodcastScrapingSteps')
-    podcast = models.ForeignKey('Podcast', null=True, blank=True)
-
     slug = models.CharField(max_length=50, unique=True)
     start_url = models.URLField()
 
@@ -44,10 +42,12 @@ class PodcastScrapingConfiguration(models.Model):
 
 
 class Podcast(models.Model):
+    config = models.OneToOneField('PodcastScrapingConfiguration', related_name='podcast')
+
     # RSS fields
-    title = models.CharField(max_length=100)
+    title = models.CharField(max_length=200)
     description = models.CharField(max_length=1000)
-    link = models.URLField()
+    link = models.URLField(unique=True)
     language = models.CharField(max_length=10)
     image_url = models.URLField()
 
@@ -76,14 +76,25 @@ class Podcast(models.Model):
         return ET.tostring(self.generate_rss_xml())
 
     def __str__(self):
-        pass
+        return self.title
+
+
+class PodcastItemManager(models.Manager):
+    def create(self, *args, **kwargs):
+        link = kwargs['link']
+        # check content-length for link
+        kwargs['audio_length'] = 124124
+        kwargs['audio_type'] = 'audio/mpeg'
+        super(PodcastItemManager, self).create(*args, **kwargs)
 
 
 class PodcastItem(models.Model):
+    objects = PodcastItemManager()
+
     podcast = models.ForeignKey('Podcast', related_name='items')
 
     # RSS Fields
-    title = models.CharField(max_length=100)
+    title = models.CharField(max_length=200)
     description = models.CharField(max_length=1000)
     link = models.URLField()
     audio_url = models.URLField()
@@ -92,9 +103,11 @@ class PodcastItem(models.Model):
         ('audio/mpeg', 'audio/mpeg'),
     )
     audio_type = models.CharField(max_length=15, choices=AUDIO_TYPE_CHOICES)
-    audio_duration = models.DurationField()
+    audio_duration = models.DurationField(null=True, blank=True)
+    pub_date = models.DateTimeField(null=True, blank=True)
 
     class Meta:
+        unique_together = (("podcast", "link"),)
         verbose_name = "Podcast item"
         verbose_name_plural = "Podcast items"
 
@@ -110,15 +123,21 @@ class PodcastItem(models.Model):
                       length=self.audio_length,
                       type=self.audio_type)
         ET.SubElement(item, '{%s}duration' % ITUNES_NS).text = self.duration
+        ET.SubElement(item, 'pubDate').text = formatdate(self.pub_date)
         return item
 
-    # def __str__(self):
-    #     pass
+    def __str__(self):
+        return self.title
 
 
-# StepConfiguration
-# - {xpath: '//'},
-# - {xpath: '//', action=store, name=audio_url} - no transition
-# - {xpath: '//', action=follow},
-# - {xpath: '//', action=parse_json},
-# - {jsonpath: '//'}
+class PodcastIgnoreItem(models.Model):
+    podcast = models.ForeignKey('Podcast', related_name='ignore_items')
+    link = models.URLField()
+
+    class Meta:
+        unique_together = (("podcast", "link"),)
+        verbose_name = "Podcast ignore item"
+        verbose_name_plural = "Podcast ignore items"
+
+    def __str__(self):
+        return self.link
