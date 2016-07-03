@@ -126,7 +126,7 @@ case "$1" in
         ;;
 
     restart)
-        docker-compose $OPTS stop
+        $DOCKER_COMPOSE $OPTS stop
         $DOCKER_COMPOSE $OPTS up $UPOPTS
         ;;
 
@@ -139,6 +139,8 @@ esac
 exit 0
 EOL
 sudo chmod 755 /etc/init.d/podcastscraper
+
+sudo service podcastscraper start
 
 crontab <<"EOL"
 MAILTO=kamil@kujawinski.net

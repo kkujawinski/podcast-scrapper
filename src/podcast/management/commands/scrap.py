@@ -175,14 +175,13 @@ class Command(BaseCommand):
                     log.debug('Ignored %s' % item_url)
                     continue
 
-                log.info('Processing %s:%s' % (podcast_config.slug, item_url))
+                log.info('Processing [%s] %s' % (podcast_config.slug, item_url))
                 try:
                     self.browser.get(item_url)
                     self.scrap_podcast_item(steps, link=item_url, podcast=podcast)
                 except:
                     PodcastIgnoreItem.objects.create(podcast=podcast, link=item_url)
-                    log.exception('Failed scrapping podcast item %s from %s' % (item_url, start_url))
-                    log.info("Can't scrap url %s" % item_url)
+                    log.exception('Failed scrapping url %s ' % self.browser.current_url)
                 else:
                     changed = True
 
