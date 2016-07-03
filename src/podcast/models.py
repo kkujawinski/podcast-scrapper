@@ -1,9 +1,11 @@
-from django.db import models
-from django.contrib.postgres.fields import JSONField
-
+import datetime
+import urllib.request
 from xml.etree import ElementTree as ET
-from email.utils import formatdate
 
+import email.utils as eut
+from django.contrib.postgres.fields import JSONField
+from django.db import models
+from email.utils import formatdate
 
 ITUNES_NS = '{http://www.itunes.com/dtds/podcast-1.0.dtd}image'
 ET.register_namespace('itunes', ITUNES_NS)
@@ -12,7 +14,6 @@ ET.register_namespace('itunes', ITUNES_NS)
 class PodcastScrapingSteps(models.Model):
     name = models.CharField(max_length=50)
     steps = JSONField()
-    # [stepConfiguration1, stepConfiguration2]
 
     class Meta:
         verbose_name = "Podcast scraping steps"
@@ -81,9 +82,12 @@ class Podcast(models.Model):
 
 class PodcastItemManager(models.Manager):
     def create(self, *args, **kwargs):
-        link = kwargs['link']
-        # check content-length for link
-        kwargs['audio_length'] = 124124
+        with urllib.request.urlopen(kwargs['audio_url']) as url:
+            meta = url.info()
+            kwargs['audio_length'] = int(meta.get('Content-Length'))
+            if not kwargs.get('pub_date'):
+                parsed = eut.parsedate(meta['Last-Modified'])
+                kwargs['pub_date'] = datetime.datetime(*parsed[:6])
         kwargs['audio_type'] = 'audio/mpeg'
         super(PodcastItemManager, self).create(*args, **kwargs)
 
@@ -104,10 +108,11 @@ class PodcastItem(models.Model):
     )
     audio_type = models.CharField(max_length=15, choices=AUDIO_TYPE_CHOICES)
     audio_duration = models.DurationField(null=True, blank=True)
-    pub_date = models.DateTimeField(null=True, blank=True)
+    pub_date = models.DateTimeField()
 
     class Meta:
         unique_together = (("podcast", "link"),)
+        ordering = ('-pub_date', 'pk', )
         verbose_name = "Podcast item"
         verbose_name_plural = "Podcast items"
 

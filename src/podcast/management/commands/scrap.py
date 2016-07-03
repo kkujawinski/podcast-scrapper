@@ -186,4 +186,4 @@ class Command(BaseCommand):
                     changed = True
 
             if changed:
-                log.info("Can't scrap url %s" % item_url)
+                log.info("Publishing RSS")
