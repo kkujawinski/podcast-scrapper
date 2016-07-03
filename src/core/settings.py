@@ -134,15 +134,9 @@ LOGGING = {
             'format': '%(levelname)s %(asctime)s %(module)s %(message)s'
         }
     },
-    'filters': {
-        'require_debug_true': {
-            '()': 'django.utils.log.RequireDebugTrue',
-        }
-    },
     'handlers': {
         'console': {
             'level': getvar('LOG_LEVEL', 'INFO'),
-            'filters': ['require_debug_true'],
             'class': 'logging.StreamHandler',
             'formatter': 'simple'
         },

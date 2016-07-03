@@ -6,8 +6,7 @@ from os.path import dirname, realpath
 
 current_dir = dirname(realpath(__file__))
 extra_args = sys.argv[1:]
-# container_cmd = ["python3", "/config/run.py", "start_worker"]
-container_cmd = ["bash"]
+container_cmd = ["python3", "/config/run.py", "start_worker"]
 
 cmd = [
     "docker",
@@ -23,7 +22,6 @@ cmd = [
     "--env-file", current_dir + "/env.txt",
     "--link", "podcastscraper_postgres_1:postgres",
     "--rm",
-    "-it",
 ] + extra_args + [
     "podcast_scraper-django-python3",
 ] + container_cmd
