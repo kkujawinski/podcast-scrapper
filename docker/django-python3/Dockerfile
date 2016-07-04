@@ -30,7 +30,9 @@ RUN pip3 install \
       pyvirtualdisplay==0.2 \
       selenium==2.53.5 \
       lxml==3.6.0 \
-      beautifulsoup4==4.4.1
+      beautifulsoup4==4.4.1 \
+      boto3==1.3.1 \
+      temp-utils==1.0.0
 
 COPY geckodriver-0.8.0-linux64 /usr/local/bin/wires
 

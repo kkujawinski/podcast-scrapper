@@ -1,13 +1,14 @@
+import os
 import datetime
+import time
 import urllib.request
 from xml.etree import ElementTree as ET
 
-import email.utils as eut
 from django.contrib.postgres.fields import JSONField
 from django.db import models
-from email.utils import formatdate
+from email.utils import formatdate, parsedate
 
-ITUNES_NS = '{http://www.itunes.com/dtds/podcast-1.0.dtd}image'
+ITUNES_NS = 'http://www.itunes.com/dtds/podcast-1.0.dtd'
 ET.register_namespace('itunes', ITUNES_NS)
 
 
@@ -37,6 +38,12 @@ class PodcastScrapingConfiguration(models.Model):
     class Meta:
         verbose_name = "Podcast scraping configuration"
         verbose_name_plural = "Podcast scraping configurations"
+
+    def get_public_url(self):
+        return 'pcast://' + os.environ['AWS_BUCKET'] + '/' + self.get_path()
+
+    def get_path(self):
+        return self.slug + '.xml'
 
     def __str__(self):
         return self.slug
@@ -68,7 +75,7 @@ class Podcast(models.Model):
         ET.SubElement(channel, '{%s}image' % ITUNES_NS, href=self.image_url)
         ET.SubElement(channel, 'pubDate').text = formatdate()
 
-        for podcast_item in self.items:
+        for podcast_item in self.items.all():
             channel.append(podcast_item.generate_rss_item_xml())
 
         return rss
@@ -86,7 +93,7 @@ class PodcastItemManager(models.Manager):
             meta = url.info()
             kwargs['audio_length'] = int(meta.get('Content-Length'))
             if not kwargs.get('pub_date'):
-                parsed = eut.parsedate(meta['Last-Modified'])
+                parsed = parsedate(meta['Last-Modified'])
                 kwargs['pub_date'] = datetime.datetime(*parsed[:6])
         kwargs['audio_type'] = 'audio/mpeg'
         super(PodcastItemManager, self).create(*args, **kwargs)
@@ -125,10 +132,11 @@ class PodcastItem(models.Model):
         ET.SubElement(item, 'description').text = self.description
         ET.SubElement(item, 'enclosure',
                       url=self.audio_url,
-                      length=self.audio_length,
+                      length=str(self.audio_length),
                       type=self.audio_type)
-        ET.SubElement(item, '{%s}duration' % ITUNES_NS).text = self.duration
-        ET.SubElement(item, 'pubDate').text = formatdate(self.pub_date)
+        ET.SubElement(item, '{%s}duration' % ITUNES_NS).text = str(self.audio_duration)
+        pub_date_timestamp = time.mktime(self.pub_date.timetuple())
+        ET.SubElement(item, 'pubDate').text = formatdate(pub_date_timestamp)
         return item
 
     def __str__(self):

@@ -7,6 +7,7 @@ from os.path import dirname, realpath
 current_dir = dirname(realpath(__file__))
 extra_args = sys.argv[1:]
 container_cmd = ["python3", "/config/run.py", "start_worker"]
+# container_cmd = ["bash"]
 
 cmd = [
     "docker",
