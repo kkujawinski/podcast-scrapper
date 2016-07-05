@@ -1,12 +1,46 @@
 <html>
 <head>
-    <title>Index</title>
+    <title>Podcasts</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/pure/0.6.0/pure-min.css" />
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" />
+    <style type="text/css">
+        #podcasts {
+            width: calc(100% - 20px);;
+            margin: 10px;
+        }
+        .buttons {
+            width: 20%;
+            text-align: center;
+        }
+        .buttons a {
+            font-size: 0.8em;
+            margin: 2px;
+        }
+        .buttons a i {
+            font-size: 1.5em;
+        }
+    </style>
 </head>
 <body>
-    <ul>
+<table class="pure-table pure-table-bordered" id="podcasts">
+    <thead>
+        <tr>
+            <th>Title</th>
+            <th>Description</th>
+            <th></th>
+        </tr>
+    </thead>
+
+    <tbody>
     {% for item in podcasts_configs %}
-        <li><a href="{{item.get_public_url}}">{{item.podcast.title}}</a></li>
+        <tr>
+            <td>{{item.podcast.title}}<br/><a href="{{item.podcast.link}}">{{item.podcast.link}}</a></td>
+            <td>{{item.podcast.description}}</td>
+            <td class="buttons"><a class="pure-button" href="{{item.get_public_url_pcast}}"><i class="fa fa-rss" aria-hidden="true"></i> PCAST</a><a class="pure-button" href="{{item.get_public_url}}"><i class="fa fa-code" aria-hidden="true"></i> XML</a></td>
+        </tr>
     {% endfor %}
-    </ul>
+    </tbody>
+</table>
 </body>
 </html>

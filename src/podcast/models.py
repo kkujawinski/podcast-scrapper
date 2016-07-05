@@ -46,7 +46,10 @@ class PodcastScrapingConfigurationManager(models.Manager):
     def publish_index_to_aws(self, transfer_client=None):
         if transfer_client is None:
             transfer_client = s3_transfer_client()
-        podcasts_configs = PodcastScrapingConfiguration.objects.select_related('podcast').filter(podcast__isnull=False)
+        podcasts_configs = PodcastScrapingConfiguration.objects.\
+            select_related('podcast').filter(podcast__isnull=False).\
+            order_by('podcast__title')
+
         template = loader.get_template('index.html')
         context = {
             'podcasts_configs': podcasts_configs,
@@ -72,8 +75,11 @@ class PodcastScrapingConfiguration(models.Model):
         verbose_name = "Podcast scraping configuration"
         verbose_name_plural = "Podcast scraping configurations"
 
-    def get_public_url(self):
+    def get_public_url_pcast(self):
         return 'pcast://' + os.environ['AWS_BUCKET'] + '/' + self.get_path()
+
+    def get_public_url(self):
+        return 'http://' + os.environ['AWS_BUCKET'] + '/' + self.get_path()
 
     def get_path(self):
         return self.slug + '.xml'
