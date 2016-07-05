@@ -1,6 +1,9 @@
 FROM ubuntu:xenial
 MAINTAINER Egyed Zoltán "zoltan.egyed@vertis.com"
 
+RUN echo deb http://ppa.launchpad.net/ionel-mc/socat/ubuntu xenial main > /etc/apt/sources.list.d/ionel-mc-socat-xenial.list \
+ && apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 88E048443558A630
+
 RUN apt-get update && apt-get -y upgrade
 ENV LANG C.UTF-8
 RUN set -x && apt-get update && \
@@ -13,7 +16,8 @@ RUN set -x && apt-get update && \
                 vim \
                 curl \
                 git \
-                wget
+                wget \
+                socat=1.7.3.1-1ionelmc1~ppa1
 
 RUN pip3 install click==6.3
 

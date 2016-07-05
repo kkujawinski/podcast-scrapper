@@ -1,25 +1,23 @@
 import json
 import logging
-import os
 import re
 import time
 from datetime import timedelta
 
-import boto3
-import boto3.session
-from boto3.s3.transfer import S3Transfer
 from bs4 import BeautifulSoup
+
 from django.core.management.base import BaseCommand, CommandError
-from django.template import loader
 from django.utils.functional import cached_property
 from lxml import etree
-from podcast.models import (Podcast, PodcastIgnoreItem, PodcastItem,
-                            PodcastScrapingConfiguration)
+from podcast.models import Podcast
+from podcast.models import PodcastIgnoreItem
+from podcast.models import PodcastItem
+from podcast.models import PodcastScrapingConfiguration
+from podcast.models import s3_transfer_client
 from pyvirtualdisplay import Display
 from selenium import webdriver
 from selenium.common.exceptions import NoSuchElementException
 from selenium.webdriver.common.desired_capabilities import DesiredCapabilities
-from temp_utils.contextmanagers import temp_file
 
 log = logging.getLogger(__name__)
 
@@ -153,40 +151,7 @@ class Command(BaseCommand):
 
     @cached_property
     def _s3_transfer_client(self):
-        session = boto3.session.Session(region_name=os.environ['AWS_REGION_NAME'])
-        session_config = boto3.session.Config(signature_version=os.environ['AWS_SIGNATURE_VERSION'])
-        s3client = session.client('s3', config=session_config)
-        return S3Transfer(s3client)
-
-    def publish_to_aws(self, podcast):
-        transfer = self._s3_transfer_client
-        with temp_file() as file_path:
-            with open(file_path, 'wb') as f:
-                f.write(podcast.generate_rss())
-            public_url = podcast.config.get_path()
-            transfer.upload_file(
-                file_path, os.environ['AWS_BUCKET'],
-                public_url,
-                extra_args={'ACL': 'public-read', 'ContentType': 'application/xml'}
-            )
-            log.info('Published RSS to %s' % public_url)
-
-    def publish_index_to_aws(self):
-        transfer = self._s3_transfer_client
-        podcasts_configs = PodcastScrapingConfiguration.objects.select_related('podcast').filter(podcast__isnull=False)
-        template = loader.get_template('index.html')
-        context = {
-            'podcasts_configs': podcasts_configs,
-        }
-        with temp_file() as file_path:
-            with open(file_path, 'w') as f:
-                f.write(template.render(context))
-            transfer.upload_file(
-                file_path, os.environ['AWS_BUCKET'],
-                'index.html',
-                extra_args={'ACL': 'public-read', 'ContentType': 'text/html; charset=UTF-8'}
-            )
-            log.info('Published new index.html')
+        return s3_transfer_client()
 
     def handle(self, *args, **options):
         any_changed = False
@@ -229,7 +194,9 @@ class Command(BaseCommand):
                     any_changed = True
 
             if changed:
-                self.publish_to_aws(podcast)
+                public_url = podcast.publish_to_aws(self._s3_transfer_client)
+                log.info('Published RSS to %s' % public_url)
 
         if any_changed:
-            self.publish_index_to_aws()
+            PodcastScrapingConfiguration.objects.publish_index_to_aws(self._s3_transfer_client)
+            log.info('Published new index.html')

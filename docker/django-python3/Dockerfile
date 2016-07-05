@@ -32,7 +32,8 @@ RUN pip3 install \
       lxml==3.6.0 \
       beautifulsoup4==4.4.1 \
       boto3==1.3.1 \
-      temp-utils==1.0.0
+      temp-utils==1.0.0 \
+      remote_pdb
 
 COPY geckodriver-0.8.0-linux64 /usr/local/bin/wires
 

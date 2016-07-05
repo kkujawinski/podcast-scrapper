@@ -37,10 +37,19 @@ class PodcastIgnoreItemInline(admin.TabularInline):
         return False
 
 
+def publish_to_aws(modeladmin, request, queryset):
+    for podcast in queryset:
+        podcast.publish_to_aws()
+    PodcastScrapingConfiguration.objects.publish_index_to_aws()
+publish_to_aws.short_description = "Publish RSS"
+
+
+
 @admin.register(Podcast)
 class PodcastAdmin(admin.ModelAdmin):
     readonly_fields = [f.name for f in Podcast._meta.local_fields]
     inlines = [PodcastItemInline, PodcastIgnoreItemInline]
+    actions = [publish_to_aws]
 
     def has_add_permission(self, request, obj=None):
         return False

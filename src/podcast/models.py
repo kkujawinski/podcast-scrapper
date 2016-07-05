@@ -1,15 +1,27 @@
-import os
 import datetime
+import os
 import time
 import urllib.request
 from xml.etree import ElementTree as ET
 
+import boto3
+import boto3.session
+from boto3.s3.transfer import S3Transfer
 from django.contrib.postgres.fields import JSONField
 from django.db import models
+from django.template import loader
 from email.utils import formatdate, parsedate
+from temp_utils.contextmanagers import temp_file
 
 ITUNES_NS = 'http://www.itunes.com/dtds/podcast-1.0.dtd'
 ET.register_namespace('itunes', ITUNES_NS)
+
+
+def s3_transfer_client():
+    session = boto3.session.Session(region_name=os.environ['AWS_REGION_NAME'])
+    session_config = boto3.session.Config(signature_version=os.environ['AWS_SIGNATURE_VERSION'])
+    s3client = session.client('s3', config=session_config)
+    return S3Transfer(s3client)
 
 
 class PodcastScrapingSteps(models.Model):
@@ -30,7 +42,28 @@ class PodcastScrapingSteps(models.Model):
         return 'PodcastScrapingSteps<%s>' % str(self)
 
 
+class PodcastScrapingConfigurationManager(models.Manager):
+    def publish_index_to_aws(self, transfer_client=None):
+        if transfer_client is None:
+            transfer_client = s3_transfer_client()
+        podcasts_configs = PodcastScrapingConfiguration.objects.select_related('podcast').filter(podcast__isnull=False)
+        template = loader.get_template('index.html')
+        context = {
+            'podcasts_configs': podcasts_configs,
+        }
+        with temp_file() as file_path:
+            with open(file_path, 'w') as f:
+                f.write(template.render(context))
+            transfer_client.upload_file(
+                file_path, os.environ['AWS_BUCKET'],
+                'index.html',
+                extra_args={'ACL': 'public-read', 'ContentType': 'text/html; charset=UTF-8'}
+            )
+
+
 class PodcastScrapingConfiguration(models.Model):
+    objects = PodcastScrapingConfigurationManager()
+
     steps = models.ForeignKey('PodcastScrapingSteps')
     slug = models.CharField(max_length=50, unique=True)
     start_url = models.URLField()
@@ -82,6 +115,20 @@ class Podcast(models.Model):
 
     def generate_rss(self):
         return ET.tostring(self.generate_rss_xml())
+
+    def publish_to_aws(self, transfer_client=None):
+        if transfer_client is None:
+            transfer_client = s3_transfer_client()
+        with temp_file() as file_path:
+            with open(file_path, 'wb') as f:
+                f.write(self.generate_rss())
+            public_url = self.config.get_path()
+            transfer_client.upload_file(
+                file_path, os.environ['AWS_BUCKET'],
+                public_url,
+                extra_args={'ACL': 'public-read', 'ContentType': 'application/xml'}
+            )
+        return public_url
 
     def __str__(self):
         return self.title
