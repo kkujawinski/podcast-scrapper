@@ -1,0 +1,12 @@
+<html>
+<head>
+    <title>Index</title>
+</head>
+<body>
+    <ul>
+    {% for item in podcasts_configs %}
+        <li><a href="{{item.get_public_url}}">{{item.podcast.title}}</a></li>
+    {% endfor %}
+    </ul>
+</body>
+</html>
