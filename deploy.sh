@@ -90,6 +90,8 @@ AWS_SECRET_ACCESS_KEY=
 AWS_BUCKET=
 AWS_REGION_NAME=
 AWS_SIGNATURE_VERSION=
+SCRAP_BATCH=3
+SCRAP_BATCH_INTERVAL=2
 EOL
 
 read -n1 -r -p "Fill env.txt and press any key to continue" key
@@ -158,5 +160,5 @@ MAILTO=kamil@kujawinski.net
 # |  |  |  |  |
 # *  *  *  *  *  command to be executed
 
-  0  3  *  *  *  /home/ec2-user/podcast-scraper/worker-docker-run.py
+  5  *  *  *  *  /home/ec2-user/podcast-scraper/worker-docker-run.py
 EOL

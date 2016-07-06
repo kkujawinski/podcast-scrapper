@@ -9,6 +9,8 @@ import boto3.session
 from boto3.s3.transfer import S3Transfer
 from django.contrib.postgres.fields import JSONField
 from django.db import models
+from django.db.models import Q
+from django.db.models.functions import Coalesce, Value
 from django.template import loader
 from email.utils import formatdate, parsedate
 from temp_utils.contextmanagers import temp_file
@@ -71,6 +73,13 @@ class PodcastScrapingConfigurationManager(models.Manager):
                 extra_args={'ACL': 'public-read', 'ContentType': 'text/html; charset=UTF-8'}
             )
 
+    def get_least_recently_updated(self, interval, limit):
+        min_datetime = datetime.datetime(*time.gmtime(0)[:7])
+        date_threshold = datetime.datetime.now() - interval
+        return self.filter(Q(last_scrap__isnull=True) | Q(last_scrap__lt=date_threshold)).\
+            annotate(last_scrap_null=Coalesce('last_scrap', Value(min_datetime))).\
+            order_by('last_scrap_null')[:limit]
+
 
 class PodcastScrapingConfiguration(models.Model):
     objects = PodcastScrapingConfigurationManager()
@@ -78,6 +87,8 @@ class PodcastScrapingConfiguration(models.Model):
     steps = models.ForeignKey('PodcastScrapingSteps')
     slug = models.CharField(max_length=50, unique=True)
     start_url = models.URLField()
+
+    last_scrap = models.DateTimeField(null=True, blank=True)
 
     class Meta:
         verbose_name = "Podcast scraping configuration"
@@ -91,6 +102,10 @@ class PodcastScrapingConfiguration(models.Model):
 
     def get_path(self):
         return self.slug + '.xml'
+
+    def touch(self):
+        self.last_scrap = datetime.datetime.now()
+        self.save()
 
     def __str__(self):
         return self.slug

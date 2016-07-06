@@ -11,6 +11,7 @@ from jsoneditor.forms import JSONEditor
 
 class PodcastScrapingConfigurationInline(admin.TabularInline):
     model = PodcastScrapingConfiguration
+    readonly_fields = ['last_scrap']
 
 
 @admin.register(PodcastScrapingSteps)

@@ -79,7 +79,10 @@ def start_uwsgi():
 
 @run.command()
 def start_worker():
-    run_cmd(['django-admin.py', 'scrap'], user='developer')
+    cmd = ['django-admin.py', 'scrap',
+           '--batch', os.environ['SCRAP_BATCH'],
+           '--batch-interval', os.environ['SCRAP_BATCH_INTERVAL']]
+    run_cmd(cmd, user='developer')
 
 
 if __name__ == '__main__':

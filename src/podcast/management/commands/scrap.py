@@ -4,16 +4,13 @@ import re
 import time
 from datetime import timedelta
 
+import fcntl
 from bs4 import BeautifulSoup
-
 from django.core.management.base import BaseCommand, CommandError
 from django.utils.functional import cached_property
 from lxml import etree
-from podcast.models import Podcast
-from podcast.models import PodcastIgnoreItem
-from podcast.models import PodcastItem
-from podcast.models import PodcastScrapingConfiguration
-from podcast.models import s3_transfer_client
+from podcast.models import (Podcast, PodcastIgnoreItem, PodcastItem,
+                            PodcastScrapingConfiguration, s3_transfer_client)
 from pyvirtualdisplay import Display
 from selenium import webdriver
 from selenium.common.exceptions import NoSuchElementException
@@ -26,6 +23,7 @@ class Command(BaseCommand):
     help = 'Scrap podcasts'
 
     def __init__(self, *args, **kwargs):
+        self.lock()
         super(Command, self).__init__(*args, **kwargs)
         log.debug('Initializing headless Firefox')
         self.display = Display(visible=0, size=(1024, 768))
@@ -37,14 +35,37 @@ class Command(BaseCommand):
         log.debug('Initialized headless Firefox')
 
     def __del__(self):
-        self.browser.quit()
-        self.display.stop()
+        if hasattr(self, 'browser'):
+            self.browser.quit()
+        if hasattr(self, 'display'):
+            self.display.stop()
+        self.unlock()
+
+    def lock(self):
+        file_path = '/data/scraper_exclusive_lock'
+        self.file_lock = open(file_path, 'wb')
+        try:
+            fcntl.lockf(self.file_lock, fcntl.LOCK_EX | fcntl.LOCK_NB)
+        except BlockingIOError:
+            exit(0)
+
+    def unlock(self):
+        fcntl.lockf(self.file_lock, fcntl.LOCK_UN)
+        self.file_lock.close()
 
     def add_arguments(self, parser):
-        parser.add_argument('podcast', nargs='*')
+        parser.add_argument('--podcast', action='append')
+        parser.add_argument('--batch',  type=int)
+        parser.add_argument('--batch-interval',  type=int)
 
     def get_podcasts_config(self, options):
-        if options['podcast']:
+        if options['batch']:
+            items = PodcastScrapingConfiguration.objects.get_least_recently_updated(
+                 interval=timedelta(days=options['batch_interval']), limit=options['batch']
+            )
+            for podcast in items:
+                yield podcast
+        elif options['podcast']:
             for podcast_config in options['podcast']:
                 try:
                     yield PodcastScrapingConfiguration.objects.get(pk=podcast_config)
@@ -154,11 +175,16 @@ class Command(BaseCommand):
         return s3_transfer_client()
 
     def handle(self, *args, **options):
+        self._handle(*args, **options)
+
+    def _handle(self, *args, **options):
         any_changed = False
         for podcast_config in self.get_podcasts_config(options):
             start_url = podcast_config.start_url
             steps = podcast_config.steps.steps
             changed = False
+
+            log.debug('Processing podcast %s' % start_url)
 
             try:
                 self.browser.get(start_url)
@@ -192,6 +218,8 @@ class Command(BaseCommand):
                 else:
                     changed = True
                     any_changed = True
+
+            podcast_config.touch()
 
             if changed:
                 public_url = podcast.publish_to_aws(self._s3_transfer_client)
