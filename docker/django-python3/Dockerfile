@@ -18,7 +18,6 @@ RUN pip3 install \
       uwsgi==2.0.13.1 \
       django==1.9.7 \
       psycopg2==2.6.1 \
-      django-debug-toolbar==1.4 \
       djangorestframework==3.3.3 \
       markdown==2.6.6 \
       django-filter==0.13.0 \
