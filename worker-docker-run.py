@@ -13,6 +13,7 @@ cmd = [
     "docker",
     "run",
     "--user", "developer",
+    "--memory", "800M",
     "--volume", current_dir + "/src:/src",
     "--volume", current_dir + "/docker/django-python3/config:/config",
     "--volume", current_dir + "/container_shared:/container_shared",

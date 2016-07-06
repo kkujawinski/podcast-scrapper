@@ -93,7 +93,7 @@ class Podcast(models.Model):
 
     # RSS fields
     title = models.CharField(max_length=200)
-    description = models.CharField(max_length=1000)
+    description = models.CharField(max_length=2000)
     link = models.URLField(unique=True)
     language = models.CharField(max_length=10)
     image_url = models.URLField()
@@ -159,7 +159,7 @@ class PodcastItem(models.Model):
 
     # RSS Fields
     title = models.CharField(max_length=200)
-    description = models.CharField(max_length=1000)
+    description = models.CharField(max_length=2000)
     link = models.URLField()
     audio_url = models.URLField()
     audio_length = models.PositiveIntegerField()
