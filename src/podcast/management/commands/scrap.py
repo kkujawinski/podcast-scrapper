@@ -174,7 +174,7 @@ class Command(BaseCommand):
             except:
                 log.error('Failed scrapping podcast details')
 
-            for item_url in items_urls:
+            for item_url in set(items_urls):
                 if item_url in podcast_items_urls:
                     log.debug('Skipped %s' % item_url)
                     continue
