@@ -24,6 +24,14 @@ def s3_transfer_client():
     return S3Transfer(s3client)
 
 
+class TruncatingCharField(models.CharField):
+    def get_prep_value(self, value):
+        value = super(TruncatingCharField, self).get_prep_value(value)
+        if value:
+            return value[:self.max_length]
+        return value
+
+
 class PodcastScrapingSteps(models.Model):
     name = models.CharField(max_length=50)
     steps = JSONField()
@@ -92,8 +100,8 @@ class Podcast(models.Model):
     config = models.OneToOneField('PodcastScrapingConfiguration', related_name='podcast')
 
     # RSS fields
-    title = models.CharField(max_length=200)
-    description = models.CharField(max_length=2000)
+    title = TruncatingCharField(max_length=200)
+    description = TruncatingCharField(max_length=2000)
     link = models.URLField(unique=True)
     language = models.CharField(max_length=10)
     image_url = models.URLField()
@@ -158,8 +166,8 @@ class PodcastItem(models.Model):
     podcast = models.ForeignKey('Podcast', related_name='items')
 
     # RSS Fields
-    title = models.CharField(max_length=200)
-    description = models.CharField(max_length=2000)
+    title = TruncatingCharField(max_length=200)
+    description = TruncatingCharField(max_length=2000)
     link = models.URLField()
     audio_url = models.URLField()
     audio_length = models.PositiveIntegerField()
