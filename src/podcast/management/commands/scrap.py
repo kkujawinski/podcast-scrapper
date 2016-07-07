@@ -203,11 +203,13 @@ class Command(BaseCommand):
                 except Podcast.DoesNotExist:
                     podcast = self.scrap_podcast(steps, link=start_url, config=podcast_config)
 
-                podcast_items_urls = set(podcast.items.values_list('link', flat=True))
-                podcast_items_ignore_urls = set(podcast.ignore_items.values_list('link', flat=True))
                 items_urls = self.get_podcast_all_items_urls(steps)
             except:
-                log.error('Failed scrapping podcast details')
+                log.exception('Failed scrapping podcast details')
+                continue
+            else:
+                podcast_items_urls = set(podcast.items.values_list('link', flat=True))
+                podcast_items_ignore_urls = set(podcast.ignore_items.values_list('link', flat=True))
 
             for item_url in set(items_urls):
                 if item_url in podcast_items_urls:
