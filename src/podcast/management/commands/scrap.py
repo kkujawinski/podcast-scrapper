@@ -1,3 +1,4 @@
+import contextlib
 import json
 import logging
 import re
@@ -22,36 +23,29 @@ log = logging.getLogger(__name__)
 class Command(BaseCommand):
     help = 'Scrap podcasts'
 
-    def __init__(self, *args, **kwargs):
-        self.lock()
-        super(Command, self).__init__(*args, **kwargs)
+    @contextlib.contextmanager
+    def init_browser(self):
         log.debug('Initializing headless Firefox')
-        self.display = Display(visible=0, size=(1024, 768))
-        self.display.start()
+        display = Display(visible=0, size=(1024, 768))
+        display.start()
         caps = DesiredCapabilities.FIREFOX
         caps["marionette"] = True
         caps["binary"] = "/usr/bin/firefox"
         self.browser = webdriver.Firefox(capabilities=caps)
         log.debug('Initialized headless Firefox')
+        yield
+        self.browser.quit()
+        display.stop()
+        log.debug('Headless Firefox cleaned up')
 
-    def __del__(self):
-        if hasattr(self, 'browser'):
-            self.browser.quit()
-        if hasattr(self, 'display'):
-            self.display.stop()
-        self.unlock()
-
+    @contextlib.contextmanager
     def lock(self):
-        file_path = '/data/scraper_exclusive_lock'
-        self.file_lock = open(file_path, 'wb')
-        try:
-            fcntl.lockf(self.file_lock, fcntl.LOCK_EX | fcntl.LOCK_NB)
-        except BlockingIOError:
-            exit(0)
-
-    def unlock(self):
-        fcntl.lockf(self.file_lock, fcntl.LOCK_UN)
-        self.file_lock.close()
+        with open('/data/scraper_exclusive_lock', "wb") as f:
+            log.debug('Acquiring lock')
+            fcntl.lockf(f, fcntl.LOCK_EX | fcntl.LOCK_NB)
+            yield
+            fcntl.lockf(f, fcntl.LOCK_UN)
+            log.debug('Released lock')
 
     def add_arguments(self, parser):
         parser.add_argument('--podcast', action='append')
@@ -175,11 +169,21 @@ class Command(BaseCommand):
         return s3_transfer_client()
 
     def handle(self, *args, **options):
-        self._handle(*args, **options)
+        podcast_config_items = self.get_podcasts_config(options)
+        if not podcast_config_items:
+            log.debug('No podcast config items to process')
 
-    def _handle(self, *args, **options):
+        try:
+            with self.lock():
+                with self.init_browser():
+                    self._handle(podcast_config_items)
+        except BlockingIOError:
+            log.debug('Another scraper process is running')
+            exit(0)
+
+    def _handle(self, podcast_config_items):
         any_changed = False
-        for podcast_config in self.get_podcasts_config(options):
+        for podcast_config in podcast_config_items:
             start_url = podcast_config.start_url
             steps = podcast_config.steps.steps
             changed = False
