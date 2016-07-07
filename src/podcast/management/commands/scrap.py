@@ -47,6 +47,17 @@ class Command(BaseCommand):
             fcntl.lockf(f, fcntl.LOCK_UN)
             log.debug('Released lock')
 
+    def refresh_document(self):
+        page_source = self.browser.page_source
+        page_source = re.sub('xmlns(:\w+)?="[^"]+"', '', page_source)
+        page_source = BeautifulSoup(page_source, 'lxml')
+        parser = etree.XMLParser(recover=True)
+        self.document = etree.fromstring(str(page_source), parser)
+
+    def browser_open_url(self, url):
+        self.browser.get(url)
+        self.refresh_document()
+
     def add_arguments(self, parser):
         parser.add_argument('--podcast', action='append')
         parser.add_argument('--batch',  type=int)
@@ -71,20 +82,13 @@ class Command(BaseCommand):
 
     def scrap_value_items(self, type_, value_config, document):
         if type_ == 'xpath':
-            page_source = self.browser.page_source
-            page_source = re.sub('xmlns(:\w+)?="[^"]+"', '', page_source)
-            page_source = BeautifulSoup(page_source, 'lxml')
-            parser = etree.XMLParser(recover=True)
-            document = etree.fromstring(str(page_source), parser)
-
             def get_text(d):
                 try:
                     output = ''.join(d.itertext())
                 except AttributeError:
                     output = d
                 return output.strip()
-
-            return [get_text(d) for d in document.xpath(value_config['xpath'])]
+            return [get_text(d) for d in self.document.xpath(value_config['xpath'])]
         elif type_ == 'json':
             return [value_config['value'].format(**json.loads(d)) for d in document]
         elif type_ == 'regex' and 'replace' in value_config:
@@ -132,7 +136,7 @@ class Command(BaseCommand):
             field_steps = steps['items-store'][field]
             try:
                 value = self.scrap_values(field_steps)[0]
-            except IndexError:
+            except (IndexError, TypeError):
                 pass
             else:
                 if value:
@@ -147,6 +151,7 @@ class Command(BaseCommand):
         else:
             log.debug('Opening next page')
             next_page_link.click()
+            self.refresh_document()
             return True
 
     def get_podcast_page_items_urls(self, steps):
@@ -191,7 +196,7 @@ class Command(BaseCommand):
             log.debug('Processing podcast %s' % start_url)
 
             try:
-                self.browser.get(start_url)
+                self.browser_open_url(start_url)
 
                 try:
                     podcast = podcast_config.podcast
@@ -214,7 +219,7 @@ class Command(BaseCommand):
 
                 log.info('Processing [%s] %s' % (podcast_config.slug, item_url))
                 try:
-                    self.browser.get(item_url)
+                    self.browser_open_url(item_url)
                     self.scrap_podcast_item(steps, link=item_url, podcast=podcast)
                 except:
                     PodcastIgnoreItem.objects.create(podcast=podcast, link=item_url)
