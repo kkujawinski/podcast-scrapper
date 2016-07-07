@@ -15,7 +15,7 @@ cmd = [
     "--user", "developer",
     "--memory", "700MB",
     "--cpu-period", "50000",
-    "--cpu-quota", "10000",
+    "--cpu-quota", "9000",
     "--volume", current_dir + "/src:/src",
     "--volume", current_dir + "/docker/django-python3/config:/config",
     "--volume", current_dir + "/container_shared:/container_shared",
