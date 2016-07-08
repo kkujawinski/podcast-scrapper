@@ -160,12 +160,15 @@ class Command(BaseCommand):
         return items
 
     def get_podcast_all_items_urls(self, steps):
-        items = []
-        while True:
-            items.extend(self.get_podcast_page_items_urls(steps))
+        items = set()
+        items_len = 0
 
-            if not self.process_next_items_page(steps):
+        while True:
+            items.update(self.get_podcast_page_items_urls(steps))
+            items_len_new = len(items)
+            if not self.process_next_items_page(steps) or items_len == items_len_new:
                 break
+            items_len = items_len_new
             time.sleep(1.5)
         return items
 
@@ -211,7 +214,7 @@ class Command(BaseCommand):
                 podcast_items_urls = set(podcast.items.values_list('link', flat=True))
                 podcast_items_ignore_urls = set(podcast.ignore_items.values_list('link', flat=True))
 
-            for item_url in set(items_urls):
+            for item_url in items_urls:
                 if item_url in podcast_items_urls:
                     log.debug('Skipped %s' % item_url)
                     continue
