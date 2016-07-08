@@ -117,6 +117,11 @@ UPOPTS="-d --no-recreate --no-build --no-deps"
 DOCKER_COMPOSE=/usr/local/bin/docker-compose
 
 case "$1" in
+    forcestart)
+        echo "Starting Docker Compose"
+        $DOCKER_COMPOSE $OPTS up -d --force-recreate
+        ;;
+
     start)
         echo "Starting Docker Compose"
         $DOCKER_COMPOSE $OPTS up $UPOPTS
@@ -138,7 +143,7 @@ case "$1" in
         ;;
 
     *)
-        echo "Usage: /etc/init.d/podcastscraper {start|stop|restart|reload}"
+        echo "Usage: /etc/init.d/podcastscraper {start|stop|restart|reload|forcestart}"
         exit 1
         ;;
 esac
