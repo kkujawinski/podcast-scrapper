@@ -138,7 +138,7 @@ LOGGING = {
             'class': 'django.utils.log.AdminEmailHandler'
         },
         'django_file': {
-            'level': 'INFO',
+            'level': 'DEBUG',
             'class': 'logging.handlers.TimedRotatingFileHandler',
             'filename': '/data/logs/django/django.log',
             'when': 'midnight',
@@ -148,7 +148,7 @@ LOGGING = {
     },
     'loggers': {
         'podcast': {
-            'handlers': ['console'],
+            'handlers': ['console', 'django_file'],
             'level': 'DEBUG',
         },
         'django': {

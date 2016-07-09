@@ -1,6 +1,7 @@
 import contextlib
 import json
 import logging
+import os
 import re
 import time
 from datetime import timedelta
@@ -36,6 +37,7 @@ class Command(BaseCommand):
         yield
         self.browser.quit()
         display.stop()
+        os.unlink('geckodriver.log')
         log.debug('Headless Firefox cleaned up')
 
     @contextlib.contextmanager
