@@ -33,17 +33,21 @@ class PodcastScrapingAdmin(admin.ModelAdmin):
 
 class PodcastItemInline(admin.TabularInline):
     model = PodcastItem
-    fields = ['title', 'show_link', 'description', 'pub_date']
+    fields = ['title', 'show_links', 'description', 'pub_date']
     readonly_fields = fields
 
     def has_add_permission(self, request, obj=None):
         return False
 
-    def show_link(sel, obj):
+    def show_links(sel, obj):
         full_link = urljoin(obj.podcast.link, obj.link)
-        return '<a href="{0}">{1}</a>'.format(full_link, obj.link)
-    show_link.short_description = 'Link'
-    show_link.allow_tags = True
+        return ''.join((
+            'URL: <a href="{0}">{1}</a>'.format(full_link, obj.link),
+            '<br/><br/>',
+            'AUDIO: <a href="{0}">{0}</a>'.format(obj.audio_url),
+        ))
+    show_links.short_description = 'Links'
+    show_links.allow_tags = True
 
 
 class PodcastIgnoreItemInline(admin.TabularInline):
