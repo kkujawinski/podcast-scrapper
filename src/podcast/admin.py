@@ -5,6 +5,7 @@ from .models import PodcastItem
 from .models import PodcastIgnoreItem
 from .models import PodcastScrapingSteps
 from .models import PodcastScrapingConfiguration
+from .models import PodcastSuggestion
 
 from django.core import urlresolvers
 from django.contrib.postgres.fields import JSONField
@@ -101,3 +102,14 @@ class PodcastAdmin(admin.ModelAdmin):
 
     def has_add_permission(self, request, obj=None):
         return False
+
+
+@admin.register(PodcastSuggestion)
+class PodcastSuggestionAdmin(admin.ModelAdmin):
+    fields = ['show_url', 'email']
+    readonly_fields = fields
+
+    def show_url(sel, obj):
+        return '<a href="{0}">{0}</a>'.format(obj.url)
+    show_url.short_description = 'Link'
+    show_url.allow_tags = True

@@ -8,6 +8,7 @@ import boto3
 import boto3.session
 from boto3.s3.transfer import S3Transfer
 from django.contrib.postgres.fields import JSONField
+from django.conf import settings
 from django.db import models
 from django.db.models import Q
 from django.db.models.functions import Coalesce, Value
@@ -53,20 +54,22 @@ class PodcastScrapingSteps(models.Model):
 
 
 class PodcastScrapingConfigurationManager(models.Manager):
-    def publish_index_to_aws(self, transfer_client=None):
-        if transfer_client is None:
-            transfer_client = s3_transfer_client()
+    def get_index_context(self):
         podcasts_configs = PodcastScrapingConfiguration.objects.\
             select_related('podcast').filter(podcast__isnull=False).\
             order_by('podcast__title')
-
-        template = loader.get_template('index.html')
-        context = {
+        return {
             'podcasts_configs': podcasts_configs,
+            'base_url': settings.BASE_URL
         }
+
+    def publish_index_to_aws(self, transfer_client=None):
+        if transfer_client is None:
+            transfer_client = s3_transfer_client()
+        template = loader.get_template('index.html')
         with temp_file() as file_path:
             with open(file_path, 'w') as f:
-                f.write(template.render(context))
+                f.write(template.render(self.get_index_context()))
             transfer_client.upload_file(
                 file_path, os.environ['AWS_BUCKET'],
                 'index.html',
@@ -230,3 +233,11 @@ class PodcastIgnoreItem(models.Model):
 
     def __str__(self):
         return self.link
+
+
+class PodcastSuggestion(models.Model):
+    url = models.URLField(unique=True)
+    email = models.EmailField(null=True, blank=True)
+
+    def __str__(self):
+        return self.url

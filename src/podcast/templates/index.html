@@ -1,40 +1,75 @@
+<!DOCTYPE html>
 <html>
 <head>
     <title>Podcasts</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/pure/0.6.0/pure-min.css" />
-    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/pure/0.6.0/pure-min.css">
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css">
     <style type="text/css">
-        #podcasts {
-            margin: 10px;
+        body {
+            padding: 10px;
         }
-        .buttons {
-            width: 10%;
-            text-align: center;
+        #podcasts, #suggest {
+            width: 100%;
+            margin: 10px auto;
         }
         .buttons a {
             font-size: 0.8em;
-            margin: 2px;
+            margin: 2px 2px 2px 0;
         }
-        .buttons a i {
-            font-size: 1.5em;
+        .external-link {
+            word-break: break-all;
         }
     </style>
+    <script type="text/javascript">
+        window.onload = function() {
+            var form = document.querySelector('#suggest'),
+                button = document.querySelector('#suggest button');
+            form.addEventListener('submit', function(event) {
+                event.preventDefault();
+                if (!form.checkValidity()) {
+                    return;
+                }
+                var xmlhttp = new XMLHttpRequest();
+                xmlhttp.open("POST", '{{ base_url }}{% url 'suggestion' %}');
+                xmlhttp.onreadystatechange = function() {
+                    if (xmlhttp.readyState == XMLHttpRequest.DONE) {
+                        if(xmlhttp.status == 200){
+                            alert('Suggestion send');
+                        } else {
+                            alert('Error: ' + xmlhttp.responseText);
+                        }
+                    }
+                }
+                xmlhttp.send(new FormData(form));
+            });
+        };
+
+    </script>
 </head>
 <body>
-<table class="pure-table pure-table-bordered" id="podcasts">
-    <thead>
-        <tr>
-            <th>Description</th>
-            <th>Download</th>
-        </tr>
-    </thead>
 
+<form class="pure-form pure-g" id="suggest">
+    <div class="pure-u-1">
+        <input type="url" name="url" placeholder="Suggest podcast url" class="pure-input-1" required>
+    </div>
+    <div class="pure-u-7-8">
+        <input type="email" name="email" placeholder="You email (optional)" class="pure-input-1">
+    </div>
+    <div class="pure-u-1-8">
+        <button class="pure-button pure-button-primary pure-input-1"><i class="fa fa-plus" aria-hidden="true"></i></button>
+    </div>
+</form>
+
+<table class="pure-table pure-table-bordered" id="podcasts">
     <tbody>
     {% for item in podcasts_configs %}
         <tr>
-            <td><b>{{item.podcast.title}}</b><br/><a href="{{item.podcast.link}}">{{item.podcast.link}}</a><br/><br/>{{item.podcast.description|linebreaksbr}}</td>
-            <td class="buttons"><a class="pure-button" href="{{item.get_public_url_pcast}}"><i class="fa fa-rss" aria-hidden="true"></i> PCAST</a><a class="pure-button" href="{{item.get_public_url}}"><i class="fa fa-code" aria-hidden="true"></i> XML</a></td>
+            <td><b>{{item.podcast.title}}</b><br/><a href="{{item.podcast.link}}" class="external-link">{{item.podcast.link}}</a>
+
+            <div class="buttons"><a class="pure-button" href="{{item.get_public_url_pcast}}"><i class="fa fa-rss" aria-hidden="true"></i> PCAST</a><a class="pure-button" href="{{item.get_public_url}}"><i class="fa fa-code" aria-hidden="true"></i> XML</a></div>
+
+            {{item.podcast.description|linebreaksbr}}</td>
         </tr>
     {% endfor %}
     </tbody>

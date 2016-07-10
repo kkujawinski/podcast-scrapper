@@ -20,9 +20,11 @@ def getvar(name, default=None, required=True):
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = getvar('DJANGO_SECRET_KEY')
 DEBUG = getvar('DEBUG', 'True') == 'True'
-ALLOWED_HOSTS = getvar('ALLOWED_HOSTS', '').split(',')
+ALLOWED_HOSTS = [i for i in getvar('ALLOWED_HOSTS', '').split(',') if i]
+BASE_URL = 'http://' + ALLOWED_HOSTS[0] if ALLOWED_HOSTS else ''
 LOGIN_URL = '/admin/login/'
 LOGIN_REDIRECT_URL = '/admin/'
+SUBDOMAINS = ('admin', 'api')
 
 # Application definition
 INSTALLED_APPS = (
@@ -48,6 +50,7 @@ JSON_EDITOR_JS = 'https://cdnjs.cloudflare.com/ajax/libs/jsoneditor/4.2.1/jsoned
 JSON_EDITOR_CSS = 'https://cdnjs.cloudflare.com/ajax/libs/jsoneditor/4.2.1/jsoneditor.css'
 
 MIDDLEWARE_CLASSES = (
+    'podcast.middleware.SubdomainMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',

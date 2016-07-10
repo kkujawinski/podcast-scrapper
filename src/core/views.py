@@ -1,15 +1,29 @@
 # coding: utf-8
-# Core and 3th party packages
-from rest_framework.views import APIView
-from rest_framework.response import Response
-from django.core.urlresolvers import reverse
-from django.views.generic import TemplateView
+from django.http import HttpResponseBadRequest, JsonResponse
+from django.utils.decorators import method_decorator
+from django.views.decorators.csrf import csrf_exempt
+from django.views.generic import TemplateView, View
+from podcast.models import PodcastScrapingConfiguration, PodcastSuggestion
+from django.db.utils import IntegrityError
 
 
-class HomePageView(TemplateView):
-    template_name = "home.html"
+class SendSuggestionView(View):
+    @method_decorator(csrf_exempt)
+    def dispatch(self, request, *args, **kwargs):
+        return super(SendSuggestionView, self).dispatch(request, *args, **kwargs)
+
+    def post(self, request):
+        try:
+            PodcastSuggestion.objects.create(email=request.POST['email'], url=request.POST['url'])
+        except IntegrityError as e:
+            return HttpResponseBadRequest(str('Suggestion was already sent.'))
+        except Exception as e:
+            return HttpResponseBadRequest(str(e))
+        return JsonResponse({})
 
 
-class UrlsApi(APIView):
-    def get(self, request, format=None):
-        return Response({'admin_index': reverse('admin:index')})
+class IndexView(TemplateView):
+    template_name = 'index.html'
+
+    def get_context_data(self, *args, **kwargs):
+        return PodcastScrapingConfiguration.objects.get_index_context()
