@@ -25,6 +25,7 @@ RUN pip3 install \
       django-cleanup==0.4.2 \
       django-extensions==1.6.7 \
       django-compressor==2.0 \
+      django-cors-middleware==1.2.0 \
       "git+git://github.com/sin5/django-jsoneditor.git@fc79bf852e9de98accccfcdffe59612f890f87c2" \
       pyvirtualdisplay==0.2 \
       selenium==2.53.5 \
