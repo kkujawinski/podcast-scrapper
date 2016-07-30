@@ -171,9 +171,8 @@ class PodcastItemManager(models.Manager):
         with urllib.request.urlopen(kwargs['audio_url']) as url:
             meta = url.info()
             kwargs['audio_length'] = int(meta.get('Content-Length'))
-            if not kwargs.get('pub_date'):
-                parsed = parsedate(meta['Last-Modified'])
-                kwargs['pub_date'] = datetime.datetime(*parsed[:6])
+            parsed = parsedate(meta['Last-Modified'])
+            kwargs['pub_date'] = datetime.datetime(*parsed[:6])
         kwargs['audio_type'] = 'audio/mpeg'
         super(PodcastItemManager, self).create(*args, **kwargs)
 

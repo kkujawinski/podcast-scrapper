@@ -133,7 +133,7 @@ class Command(BaseCommand):
         return Podcast.objects.create(**params)
 
     def scrap_podcast_item(self, steps, **params):
-        PODCAST_ITEM_FIELDS = ['title', 'description', 'audio_url', 'audio_duration', 'pub_date', ]
+        PODCAST_ITEM_FIELDS = ['title', 'description', 'audio_url', 'audio_duration',]
         for field in PODCAST_ITEM_FIELDS:
             field_steps = steps['items-store'][field]
             try:
