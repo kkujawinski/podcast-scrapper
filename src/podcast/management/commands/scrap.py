@@ -129,7 +129,10 @@ class Command(BaseCommand):
         PODCAST_FIELDS = ['title', 'description', 'language', 'image_url']
         for field in PODCAST_FIELDS:
             field_steps = steps['store'][field]
-            params[field] = self.scrap_values(field_steps)[0]
+            try:
+                params[field] = self.scrap_values(field_steps)[0]
+            except:
+                pass
         return Podcast.objects.create(**params)
 
     def scrap_podcast_item(self, steps, **params):
