@@ -57,6 +57,9 @@ class Command(BaseCommand):
         self.document = etree.fromstring(str(page_source), parser)
 
     def browser_open_url(self, url):
+        if url[0] == '/':
+            current_url = self.browser.current_url
+            url = '/'.join(current_url.split('/', 3)[:3]) + url
         self.browser.get(url)
         self.refresh_document()
 
@@ -75,7 +78,7 @@ class Command(BaseCommand):
         elif options['podcast']:
             for podcast_config in options['podcast']:
                 try:
-                    yield PodcastScrapingConfiguration.objects.get(pk=podcast_config)
+                    yield PodcastScrapingConfiguration.objects.get(slug=podcast_config)
                 except PodcastScrapingConfiguration.DoesNotExist:
                     raise CommandError('Podcast "%s" is not configured' % podcast_config)
         else:

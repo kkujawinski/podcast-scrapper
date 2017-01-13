@@ -1,7 +1,5 @@
 FROM podcast_scraper-base
 
-RUN add-apt-repository -y ppa:mozillateam/firefox-next
-
 RUN set -x && apt-get update && \
               apt-get install -y --no-install-recommends \
                 libpq5 \
@@ -12,7 +10,7 @@ RUN set -x && apt-get update && \
                 build-essential \
                 python3-dev \
                 xvfb \
-                firefox=47.0+build3-0ubuntu0.16.04.1
+                firefox=50.1.0+build2-0ubuntu0.16.04.1
 
 RUN pip3 install \
       uwsgi==2.0.13.1 \

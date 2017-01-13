@@ -1,4 +1,7 @@
+import subprocess
+
 from django.contrib import admin
+from django.contrib import messages
 from urllib.parse import urljoin
 from .models import Podcast
 from .models import PodcastItem
@@ -73,13 +76,26 @@ def publish_to_aws(modeladmin, request, queryset):
 publish_to_aws.short_description = "Publish RSS"
 
 
+def scrap(modeladmin, request, queryset):
+    for podcast in queryset:
+        slug = podcast.config.slug
+        try:
+            output = subprocess.check_output(['django-admin', 'scrap',
+                                              '--podcast', slug])
+        except subprocess.CalledProcessError as e:
+            messages.error(request, str(e))
+        else:
+            messages.info(request, 'Scrapping for %s is done' % slug)
+scrap.short_description = "Scrap"
+
+
 @admin.register(Podcast)
 class PodcastAdmin(admin.ModelAdmin):
     fields = ['title', 'description', 'language', 'show_link', 'show_image',
               'last_scrap', 'show_config']
     readonly_fields = fields
     inlines = [PodcastItemInline, PodcastIgnoreItemInline]
-    actions = [publish_to_aws]
+    actions = [publish_to_aws, scrap]
 
     def show_link(sel, obj):
         return '<a href="{0}">{0}</a>'.format(obj.link)
