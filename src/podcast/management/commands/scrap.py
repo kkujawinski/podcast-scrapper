@@ -31,7 +31,7 @@ class Command(BaseCommand):
         display.start()
         caps = DesiredCapabilities.FIREFOX
         caps["marionette"] = True
-        caps["binary"] = "/usr/bin/firefox"
+        caps["binary"] = "/opt/firefox/firefox"
         self.browser = webdriver.Firefox(capabilities=caps)
         log.debug('Initialized headless Firefox')
         yield

@@ -9,8 +9,8 @@ RUN set -x && apt-get update && \
                 libxml2-dev \
                 build-essential \
                 python3-dev \
-                xvfb \
-                firefox=50.1.0+build2-0ubuntu0.16.04.1
+                xvfb
+
 
 RUN pip3 install \
       uwsgi==2.0.13.1 \
@@ -34,5 +34,9 @@ RUN pip3 install \
       remote_pdb
 
 COPY geckodriver-0.8.0-linux64 /usr/local/bin/wires
+
+WORKDIR /opt
+RUN wget https://ftp.mozilla.org/pub/firefox/releases/50.1.0/linux-x86_64/en-US/firefox-50.1.0.tar.bz2
+RUN bzip2 -cd firefox-50.1.0.tar.bz2 | tar xvf -
 
 WORKDIR /src/

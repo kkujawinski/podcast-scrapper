@@ -1,10 +1,10 @@
 proxy:
-  hostname: podcast_scraper-proxy
-  image: podcast_scraper-base
-  command: start
-  volumes_from:
-      - podcast_scraper-data
-  entrypoint: ['python3', '/config/run.py']
+    hostname: podcast_scraper-proxy
+    image: podcast_scraper-base
+    command: start
+    volumes_from:
+        - podcast_scraper-data
+    entrypoint: ['python3', '/config/run.py']
 
 postgres:
     hostname: podcast_scraper-postgres
@@ -61,4 +61,4 @@ nginx:
     links:
         - "django:django"
     ports:
-        - "80:8080"
+        - "${PODCASTSCRAPPER_PORT}:8080"

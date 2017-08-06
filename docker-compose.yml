@@ -13,8 +13,8 @@ postgres:
     volumes_from:
         - proxy
     volumes:
-        - "./docker/postgres/config:/config"
         - "./container_shared:/container_shared"
+        - "./docker/postgres/config:/config"
     log_opt:
         max-size: "5m"
         max-file: "1"
