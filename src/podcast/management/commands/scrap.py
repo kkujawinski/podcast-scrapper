@@ -26,6 +26,7 @@ class Command(BaseCommand):
 
     @contextlib.contextmanager
     def init_browser(self):
+        os.environ['PATH'] = '/opt/firefox/:' + os.environ['PATH']
         log.debug('Initializing headless Firefox')
         display = Display(visible=0, size=(1024, 768))
         display.start()

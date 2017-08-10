@@ -9,6 +9,7 @@ RUN set -x && apt-get update && \
                 libxml2-dev \
                 build-essential \
                 python3-dev \
+                firefox \
                 xvfb
 
 
