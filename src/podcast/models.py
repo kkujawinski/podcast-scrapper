@@ -224,6 +224,7 @@ class PodcastItem(models.Model):
 class PodcastIgnoreItem(models.Model):
     podcast = models.ForeignKey('Podcast', related_name='ignore_items')
     link = models.URLField()
+    ignore_date = models.DateTimeField(auto_now_add=True)
 
     class Meta:
         unique_together = (("podcast", "link"),)

@@ -56,8 +56,9 @@ class PodcastItemInline(admin.TabularInline):
 
 class PodcastIgnoreItemInline(admin.TabularInline):
     model = PodcastIgnoreItem
-    fields = ['show_link']
+    fields = ['show_link', 'ignore_date']
     readonly_fields = fields
+    ordering = ("-ignore_date", "-id",)
 
     def has_add_permission(self, request, obj=None):
         return False
@@ -91,13 +92,16 @@ scrap.short_description = "Scrap"
 
 @admin.register(Podcast)
 class PodcastAdmin(admin.ModelAdmin):
-    fields = ['title', 'description', 'language', 'show_link', 'show_image',
+    fields = ['title', 'slug', 'description', 'language', 'show_link', 'show_image',
               'last_scrap', 'show_config']
     readonly_fields = fields
     inlines = [PodcastItemInline, PodcastIgnoreItemInline]
     actions = [publish_to_aws, scrap]
 
-    def show_link(sel, obj):
+    def slug(self, obj):
+        return obj.config.slug
+
+    def show_link(self, obj):
         return '<a href="{0}">{0}</a>'.format(obj.link)
     show_link.short_description = 'Link'
     show_link.allow_tags = True

@@ -217,7 +217,7 @@ class Command(BaseCommand):
 
                 items_urls = self.get_podcast_all_items_urls(steps)
             except:
-                log.exception('Failed scrapping podcast details')
+                log.exception('Failed scrapping podcast details %s' % podcast_config.slug)
                 continue
             else:
                 podcast_items_urls = set(podcast.items.values_list('link', flat=True))
