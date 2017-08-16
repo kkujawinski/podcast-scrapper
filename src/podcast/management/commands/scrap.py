@@ -27,28 +27,28 @@ class Command(BaseCommand):
     @contextlib.contextmanager
     def init_browser(self):
         os.environ['PATH'] = '/opt/firefox/:' + os.environ['PATH']
-        log.debug('Initializing headless Firefox')
+        log.info('Initializing headless Firefox')
         display = Display(visible=0, size=(1024, 768))
         display.start()
         caps = DesiredCapabilities.FIREFOX
         caps["marionette"] = True
         caps["binary"] = "/opt/firefox/firefox"
         self.browser = webdriver.Firefox(capabilities=caps)
-        log.debug('Initialized headless Firefox')
+        log.info('Initialized headless Firefox')
         yield
         self.browser.quit()
         display.stop()
         os.unlink('geckodriver.log')
-        log.debug('Headless Firefox cleaned up')
+        log.info('Headless Firefox cleaned up')
 
     @contextlib.contextmanager
     def lock(self):
         with open('/data/scraper_exclusive_lock', "wb") as f:
-            log.debug('Acquiring lock')
+            log.info('Acquiring lock')
             fcntl.lockf(f, fcntl.LOCK_EX | fcntl.LOCK_NB)
             yield
             fcntl.lockf(f, fcntl.LOCK_UN)
-            log.debug('Released lock')
+            log.info('Released lock')
 
     def refresh_document(self):
         page_source = self.browser.page_source
@@ -158,14 +158,15 @@ class Command(BaseCommand):
         except NoSuchElementException:
             return
         else:
-            log.debug('Opening next page')
+            log.info('Opening next page')
             next_page_link.click()
             self.refresh_document()
             return True
 
     def get_podcast_page_items_urls(self, steps):
         items = self.scrap_values(steps['items-steps'])
-        log.debug("Fetched %d items urls" % len(items))
+        log.info("Fetched %d items urls" % len(items))
+        items = [item for item in items if ':' not in item or item.split(':')[0] in ('http', 'https')]
         return items
 
     def get_podcast_all_items_urls(self, steps):
@@ -188,14 +189,14 @@ class Command(BaseCommand):
     def handle(self, *args, **options):
         podcast_config_items = self.get_podcasts_config(options)
         if not podcast_config_items:
-            log.debug('No podcast config items to process')
+            log.info('No podcast config items to process')
 
         try:
             with self.lock():
                 with self.init_browser():
                     self._handle(podcast_config_items)
         except BlockingIOError:
-            log.debug('Another scraper process is running')
+            log.info('Another scraper process is running')
             exit(0)
 
     def _handle(self, podcast_config_items):
@@ -205,7 +206,7 @@ class Command(BaseCommand):
             steps = podcast_config.steps.steps
             changed = False
 
-            log.debug('Processing podcast %s' % start_url)
+            log.info('Processing podcast %s' % start_url)
 
             try:
                 self.browser_open_url(start_url)
@@ -225,10 +226,10 @@ class Command(BaseCommand):
 
             for item_url in items_urls:
                 if item_url in podcast_items_urls:
-                    log.debug('Skipped %s' % item_url)
+                    log.info('Skipped %s' % item_url)
                     continue
                 if item_url in podcast_items_ignore_urls:
-                    log.debug('Ignored %s' % item_url)
+                    log.info('Ignored %s' % item_url)
                     continue
 
                 log.info('Processing [%s] %s' % (podcast_config.slug, item_url))
