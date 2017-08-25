@@ -177,7 +177,6 @@ import logging.config
 logging.config.dictConfig(LOGGING)
 
 ADMINS = [('admin', 'kamil@kujawinski.net'), ]
-EMAIL_SUBJECT_PREFIX = '[Django podcast_scraper] '
 EMAIL_USE_TLS = True
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 587

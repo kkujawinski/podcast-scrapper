@@ -1,0 +1,6 @@
+{% for podcast in podcasts %}
+    <h2>{{ podcast.title }}</h2>
+    <p><a href="{{ podcast.link }}">{{ podcast.link }}</a></p>
+    <p><img src="{{ podcast.get_history_chart_url }}"/></p>
+    <hr/>
+{% endfor %}
