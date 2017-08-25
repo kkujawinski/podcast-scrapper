@@ -163,8 +163,8 @@ class Podcast(models.Model):
         return public_url
 
     def get_history_chart_url(self):
-        success_dates = self.values_list('scrap_date', flat=True)
-        fail_dates = self.values_list('ignore_date', flat=True)
+        success_dates = self.items.values_list('scrap_date', flat=True)
+        fail_dates = self.ignore_items.values_list('ignore_date', flat=True)
 
         items = sorted(
             [(success_date, True) for success_date in success_dates] +
