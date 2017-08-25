@@ -10,7 +10,7 @@ from boto3.s3.transfer import S3Transfer
 from django.contrib.postgres.fields import JSONField
 from django.conf import settings
 from django.db import models
-from django.db.models import Q
+from django.db.models import Q, Max
 from django.db.models.functions import Coalesce, Value
 from django.template import loader
 from email.utils import formatdate, parsedate
@@ -162,6 +162,24 @@ class Podcast(models.Model):
             )
         return public_url
 
+    def get_history_chart_url(self):
+        max_dates = [self.items.aggregate(max=Max('scrap_date'))['max'],
+                     self.ignore_items.aggregate(max=Max('ignore_date'))['max']]
+
+        threshold = max(filter(lambda i: i, max_dates)) - datetime.timedelta(days=14)
+        success_dates = self.items.filter(scrap_date__gt=threshold).values_list('scrap_date', flat=True)
+        fail_dates = self.ignore_items.filter(ignore_date__gt=threshold).values_list('ignore_date', flat=True)
+
+        items = (
+            [(success_date, True) for success_date in success_dates] +
+            [(fail_date, False) for fail_date in fail_dates]
+        )
+
+        url_base = 'https://image-charts.com/chart?cht=lc&chxr=1000&chma=10,10,20,10&chs=500x100&chls=2,1,2&chxt=x,y'
+        values = [('0.9' if value else '0.1') for key, value in items]
+        keys = [key.strftime('%d-%m') for key, value in items]
+        return url_base + '&chd=t:' + ','.join(values) + '&chxl=0:|' + '|'.join(keys)
+
     def __str__(self):
         return self.title
 
@@ -194,6 +212,7 @@ class PodcastItem(models.Model):
     audio_type = models.CharField(max_length=15, choices=AUDIO_TYPE_CHOICES)
     audio_duration = models.DurationField(null=True, blank=True)
     pub_date = models.DateTimeField()
+    scrap_date = models.DateTimeField(auto_now_add=True)
 
     class Meta:
         unique_together = (("podcast", "link"),)

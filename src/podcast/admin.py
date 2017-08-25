@@ -29,6 +29,7 @@ class PodcastScrapingConfigurationInline(admin.TabularInline):
 
 @admin.register(PodcastScrapingSteps)
 class PodcastScrapingAdmin(admin.ModelAdmin):
+    fields = ['name', 'steps']
     formfield_overrides = {
         JSONField: {'widget': JSONEditor},
     }
@@ -93,7 +94,7 @@ scrap.short_description = "Scrap"
 @admin.register(Podcast)
 class PodcastAdmin(admin.ModelAdmin):
     fields = ['title', 'slug', 'description', 'language', 'show_link', 'show_image',
-              'last_scrap', 'show_config']
+              'last_scrap', 'show_config', 'show_history']
     readonly_fields = fields
     inlines = [PodcastItemInline, PodcastIgnoreItemInline]
     actions = [publish_to_aws, scrap]
@@ -116,6 +117,13 @@ class PodcastAdmin(admin.ModelAdmin):
         return '<img src="{0}" style="max-width: 40%;"/>'.format(obj.image_url)
     show_image.short_description = 'Image'
     show_image.allow_tags = True
+
+    def show_history(self, obj):
+        url = obj.get_history_chart_url()
+        return '<img src="{0}" style="max-width: 40%;"/>'.format(url)
+    show_history.short_description = 'History'
+    show_history.allow_tags = True
+
 
     def last_scrap(sel, obj):
         return obj.config.last_scrap
