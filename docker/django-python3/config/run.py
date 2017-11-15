@@ -85,5 +85,14 @@ def start_worker():
     run_cmd(cmd, user='developer')
 
 
+@run.command()
+@click.argument('url')
+@click.argument('podcast')
+def rerun_worker(url, podcast=None):
+    print(url)
+    cmd = ['django-admin.py', 'scrap', '--url', url, '--podcast', podcast]
+    run_cmd(cmd, user='developer')
+
+
 if __name__ == '__main__':
     run()

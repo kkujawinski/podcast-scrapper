@@ -68,9 +68,17 @@ class Command(BaseCommand):
         parser.add_argument('--podcast', action='append')
         parser.add_argument('--batch',  type=int)
         parser.add_argument('--batch-interval',  type=int)
+        parser.add_argument('--url',  type=str)
 
     def get_podcasts_config(self, options):
-        if options['batch']:
+        if options['url'] and not options['podcast']:
+            podcast = PodcastScrapingConfiguration.objects.get(
+                podcast__ignore_items__link=options['url']
+            )
+            yield podcast
+        # elif options['url'] and options['podcast']:
+        #         yield podcast
+        elif options['batch']:
             items = PodcastScrapingConfiguration.objects.get_least_recently_updated(
                  interval=timedelta(days=options['batch_interval']), limit=options['batch']
             )
@@ -194,35 +202,43 @@ class Command(BaseCommand):
         try:
             with self.lock():
                 with self.init_browser():
-                    self._handle(podcast_config_items)
+                    self._handle(podcast_config_items, options)
         except BlockingIOError:
             log.info('Another scraper process is running')
             exit(0)
 
-    def _handle(self, podcast_config_items):
+    def _handle(self, podcast_config_items, options):
         any_changed = False
         for podcast_config in podcast_config_items:
-            start_url = podcast_config.start_url
-            steps = podcast_config.steps.steps
             changed = False
+            steps = podcast_config.steps.steps
 
-            log.info('Processing podcast %s' % start_url)
+            if options['url']:
+                podcast = podcast_config.podcast
+                link = options['url']
+                items_urls = [link]
+                deleted = podcast.items.filter(link=link).delete()[1]
+                deleted.update(podcast.ignore_items.filter(link=link).delete()[1])
 
-            try:
-                self.browser_open_url(start_url)
+                log.info('Deleted items %s' % deleted)
+            else:
+                start_url = podcast_config.start_url
+                log.info('Processing podcast %s' % start_url)
 
                 try:
-                    podcast = podcast_config.podcast
-                except Podcast.DoesNotExist:
-                    podcast = self.scrap_podcast(steps, link=start_url, config=podcast_config)
+                    self.browser_open_url(start_url)
+                    try:
+                        podcast = podcast_config.podcast
+                    except Podcast.DoesNotExist:
+                        podcast = self.scrap_podcast(steps, link=start_url, config=podcast_config)
 
-                items_urls = self.get_podcast_all_items_urls(steps)
-            except:
-                log.exception('Failed scrapping podcast details %s' % podcast_config.slug)
-                continue
-            else:
-                podcast_items_urls = set(podcast.items.values_list('link', flat=True))
-                podcast_items_ignore_urls = set(podcast.ignore_items.values_list('link', flat=True))
+                    items_urls = self.get_podcast_all_items_urls(steps)
+                except:
+                    log.exception('Failed scrapping podcast details %s' % podcast_config.slug)
+                    continue
+
+            podcast_items_urls = set(podcast.items.values_list('link', flat=True))
+            podcast_items_ignore_urls = set(podcast.ignore_items.values_list('link', flat=True))
 
             for item_url in items_urls:
                 if item_url in podcast_items_urls:
