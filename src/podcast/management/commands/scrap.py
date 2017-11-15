@@ -78,18 +78,18 @@ class Command(BaseCommand):
             yield podcast
         # elif options['url'] and options['podcast']:
         #         yield podcast
-        elif options['batch']:
-            items = PodcastScrapingConfiguration.objects.get_least_recently_updated(
-                 interval=timedelta(days=options['batch_interval']), limit=options['batch']
-            )
-            for podcast in items:
-                yield podcast
         elif options['podcast']:
             for podcast_config in options['podcast']:
                 try:
                     yield PodcastScrapingConfiguration.objects.get(slug=podcast_config)
                 except PodcastScrapingConfiguration.DoesNotExist:
                     raise CommandError('Podcast "%s" is not configured' % podcast_config)
+        elif options['batch']:
+            items = PodcastScrapingConfiguration.objects.get_least_recently_updated(
+                 interval=timedelta(days=options['batch_interval']), limit=options['batch']
+            )
+            for podcast in items:
+                yield podcast
         else:
             for podcast in PodcastScrapingConfiguration.objects.filter():
                 yield podcast
@@ -195,7 +195,7 @@ class Command(BaseCommand):
         return s3_transfer_client()
 
     def handle(self, *args, **options):
-        podcast_config_items = self.get_podcasts_config(options)
+        podcast_config_items = list(self.get_podcasts_config(options))
         if not podcast_config_items:
             log.info('No podcast config items to process')
 

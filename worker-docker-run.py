@@ -5,7 +5,16 @@ from subprocess import call
 from os.path import dirname, realpath
 
 current_dir = dirname(realpath(__file__))
-extra_args = sys.argv[1:]
+
+try:
+    separator = sys.argv.index('--')
+except ValueError:
+    extra_args = sys.argv[1:]
+    command_args = []
+else:
+    extra_args = sys.argv[1:separator]
+    command_args = sys.argv[separator + 1:]
+
 container_cmd = ["python3", "/config/run.py", "start_worker"]
 # container_cmd = ["bash"]
 
@@ -30,6 +39,6 @@ cmd = [
     "--rm",
 ] + extra_args + [
     "podcast_scraper-django-python3",
-] + container_cmd
+] + container_cmd + command_args
 
 call(cmd)
