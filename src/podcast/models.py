@@ -171,7 +171,7 @@ class Podcast(models.Model):
             [(fail_date, False) for fail_date in fail_dates]
         )[-20:]
 
-        url_base = 'https://image-charts.com/chart?cht=lc&chxr=1000&chma=10,10,20,10&chs=500x100&chls=2,1,2&chxt=x,y'
+        url_base = 'https://image-charts.com/chart?cht=lc&chma=10,10,20,10&chs=500x100&chls=2,1,2&chxt=x,y'
         values = [('0.9' if value else '0.1') for key, value in items]
         keys = [key.strftime('%d-%m') for key, value in items]
         return url_base + '&chd=t:' + ','.join(values) + '&chxl=0:|' + '|'.join(keys)
