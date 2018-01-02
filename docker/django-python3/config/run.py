@@ -78,7 +78,7 @@ def start_uwsgi():
 
 
 @run.command()
-@click.argument('podcast')
+@click.argument('podcast', required=False)
 def start_worker(podcast=None):
     cmd = ['django-admin.py', 'scrap',
            '--batch', os.environ['SCRAP_BATCH'],
