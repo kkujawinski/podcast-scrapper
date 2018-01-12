@@ -6,10 +6,12 @@ import re
 import time
 from datetime import timedelta
 
-import fcntl
-from bs4 import BeautifulSoup
 from django.core.management.base import BaseCommand, CommandError
 from django.utils.functional import cached_property
+from django.utils import timezone
+
+import fcntl
+from bs4 import BeautifulSoup
 from lxml import etree
 from podcast.models import (Podcast, PodcastIgnoreItem, PodcastItem,
                             PodcastScrapingConfiguration, s3_transfer_client)
@@ -158,7 +160,9 @@ class Command(BaseCommand):
             else:
                 if value:
                     params[field] = value
-        return PodcastItem.objects.create(**params)
+        item = PodcastItem.objects.create(**params)
+        PodcastIgnoreItem.objects.filter(podcast=params['podcast'], link=params['link']).delete()
+        return item
 
     def process_next_items_page(self, steps):
         try:
@@ -238,7 +242,10 @@ class Command(BaseCommand):
                     continue
 
             podcast_items_urls = set(podcast.items.values_list('link', flat=True))
-            podcast_items_ignore_urls = set(podcast.ignore_items.values_list('link', flat=True))
+            omit_threshold = timezone.now() - timedelta(days=5)
+            podcast_items_ignore_urls = set(
+                podcast.ignore_items.filter(ignore_date__lt=omit_threshold).values_list('link', flat=True)
+            )
 
             for item_url in items_urls:
                 if item_url in podcast_items_urls:
@@ -253,8 +260,13 @@ class Command(BaseCommand):
                     self.browser_open_url(item_url)
                     self.scrap_podcast_item(steps, link=item_url, podcast=podcast)
                 except:
-                    PodcastIgnoreItem.objects.create(podcast=podcast, link=item_url)
-                    log.exception('Failed scrapping url %s ' % self.browser.current_url)
+                    obj, created = PodcastIgnoreItem.objects.get_or_create(
+                        podcast=podcast, link=item_url)
+                    if created:
+                        log.exception('Failed scrapping url %s' % self.browser.current_url)
+                    else:
+                        log.exception('Failed scrapping url %s, first_failure %s' % (
+                            self.browser.current_url, obj.ignore_date))
                 else:
                     changed = True
                     any_changed = True
