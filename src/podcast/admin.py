@@ -29,6 +29,9 @@ class PodcastScrapingConfigurationInline(admin.TabularInline):
 
 @admin.register(PodcastScrapingSteps)
 class PodcastScrapingAdmin(admin.ModelAdmin):
+    class Media:
+        js = ('js/jsoneditor_extras.js',)
+
     fields = ['name', 'steps']
     formfield_overrides = {
         JSONField: {'widget': JSONEditor},
