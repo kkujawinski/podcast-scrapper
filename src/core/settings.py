@@ -25,6 +25,7 @@ BASE_URL = 'http://' + ALLOWED_HOSTS[0] if ALLOWED_HOSTS else ''
 LOGIN_URL = '/admin/login/'
 LOGIN_REDIRECT_URL = '/admin/'
 SUBDOMAINS = ('admin', 'api')
+DATETIME_FORMAT = 'Y-m-d H:i:s'
 
 # Application definition
 INSTALLED_APPS = (

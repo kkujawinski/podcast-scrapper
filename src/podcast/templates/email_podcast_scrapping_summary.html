@@ -1,3 +1,15 @@
+<h2>Successful scrap</h2>
+<ul>
+    {% for item in success_items %}
+    <li>{{item.scrap_date}}: {{item.link}} (<a href="{{ item.podcast.link }}">{{ item.podcast.title }}</a>)</li>
+    {% endfor %}
+</ul>
+<h2>Failed scrap</h2>
+<ul>
+    {% for item in failed_items %}
+    <li>{{item.ignore_date}}: {{item.link}} (<a href="{{ item.podcast.link }}">{{ item.podcast.title }}</a>)</li>
+    {% endfor %}
+</ul>
 {% for podcast in podcasts %}
     <h2>{{ podcast.title }}</h2>
     <p><a href="{{ podcast.link }}">{{ podcast.link }}</a></p>
