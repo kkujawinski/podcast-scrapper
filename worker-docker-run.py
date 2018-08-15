@@ -39,6 +39,6 @@ cmd = [
     "--rm",
 ] + extra_args + [
     "podcast_scraper-django-python3",
-] + Ń + command_args
+] + container_cmd + command_args
 
 call(cmd)
