@@ -53,17 +53,25 @@ class Command(BaseCommand):
             log.info('Released lock')
 
     def refresh_document(self):
+        log.info('Refresh document 1')
         page_source = self.browser.page_source
         page_source = re.sub('xmlns(:\w+)?="[^"]+"', '', page_source)
+        log.info('Refresh document 3')
         page_source = BeautifulSoup(page_source, 'lxml')
+        log.info('Refresh document 4')
         parser = etree.XMLParser(recover=True)
+        log.info('Refresh document 5')
         self.document = etree.fromstring(str(page_source), parser)
+        log.info('Refresh document 6')
 
     def browser_open_url(self, url):
+        log.info('Opening url %s', url)
         if url[0] == '/':
             current_url = self.browser.current_url
             url = '/'.join(current_url.split('/', 3)[:3]) + url
+        log.info('Opening url 2 %s', url)
         self.browser.get(url)
+        log.info('Opening url 3 %s', url)
         self.refresh_document()
 
     def add_arguments(self, parser):
@@ -152,16 +160,23 @@ class Command(BaseCommand):
     def scrap_podcast_item(self, steps, **params):
         PODCAST_ITEM_FIELDS = ['title', 'description', 'audio_url', 'audio_duration',]
         for field in PODCAST_ITEM_FIELDS:
+            log.info('Scrap podcast field %s 1' % field)
             field_steps = steps['items-store'][field]
+            log.info('Scrap podcast field %s 2' % field)
             try:
                 value = self.scrap_values(field_steps)[0]
             except (IndexError, TypeError):
                 pass
             else:
+                log.info('Scrap podcast field %s 3' % field)
                 if value:
                     params[field] = value
+                    log.info('Scrapped podcast field %s=%s' % (field, value))
+        log.info('Creating podcast item %s' % str(params))
         item = PodcastItem.objects.create(**params)
+        log.info('Creating podcast item 2 %s' % str(params))
         PodcastIgnoreItem.objects.filter(podcast=params['podcast'], link=params['link']).delete()
+        log.info('Creating podcast item 3')
         return item
 
     def process_next_items_page(self, steps):
@@ -258,8 +273,11 @@ class Command(BaseCommand):
                 log.info('Processing [%s] %s' % (podcast_config.slug, item_url))
                 try:
                     self.browser_open_url(item_url)
+                    log.info('Processing 1 [%s] %s' % (podcast_config.slug, item_url))
                     self.scrap_podcast_item(steps, link=item_url, podcast=podcast)
+                    log.info('Processing 2 [%s] %s' % (podcast_config.slug, item_url))
                 except:
+                    log.info('Processing failed [%s] %s' % (podcast_config.slug, item_url))
                     obj, created = PodcastIgnoreItem.objects.get_or_create(
                         podcast=podcast, link=item_url)
                     if created:
@@ -271,6 +289,7 @@ class Command(BaseCommand):
                     changed = True
                     any_changed = True
 
+            log.info('Podcast touch')
             podcast_config.touch()
 
             if changed:
