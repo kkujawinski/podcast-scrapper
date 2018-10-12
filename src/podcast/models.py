@@ -2,6 +2,7 @@ import datetime
 import os
 import time
 import urllib.request
+from urllib.parse import urljoin
 from xml.etree import ElementTree as ET
 
 import boto3
@@ -232,6 +233,10 @@ class PodcastItem(models.Model):
         ET.SubElement(item, 'pubDate').text = formatdate(pub_date_timestamp)
         return item
 
+    @property
+    def full_link(self):
+        return urljoin(self.podcast.link, self.link)
+
     def __str__(self):
         return self.title
 
@@ -245,6 +250,10 @@ class PodcastIgnoreItem(models.Model):
         unique_together = (("podcast", "link"),)
         verbose_name = "Podcast ignore item"
         verbose_name_plural = "Podcast ignore items"
+
+    @property
+    def full_link(self):
+        return urljoin(self.podcast.link, self.link)
 
     def __str__(self):
         return self.link

@@ -1,15 +1,32 @@
 <h2>Successful scrap</h2>
+{% regroup success_items by podcast as podcast_list %}
 <ul>
-    {% for item in success_items %}
-    <li>{{item.scrap_date}}: {{item.link}} (<a href="{{ item.podcast.link }}">{{ item.podcast.title }}</a>)</li>
+    {% for podcast in podcast_list %}
+        <li><a href="{{ podcast.grouper.link }}">{{ podcast.grouper.title }}</a>
+        <ul>
+            {% for item in podcast.list %}
+                <li>{{item.scrap_date}}: <a href="{{ item.full_link }}">{{item.link}}</a></li>
+            {% endfor %}
+        </ul>
+        </li>
     {% endfor %}
 </ul>
+
 <h2>Failed scrap</h2>
+{% regroup failed_items by podcast as podcast_list %}
 <ul>
-    {% for item in failed_items %}
-    <li>{{item.ignore_date}}: {{item.link}} (<a href="{{ item.podcast.link }}">{{ item.podcast.title }}</a>)</li>
+    {% for podcast in podcast_list %}
+        <li><a href="{{ podcast.grouper.link }}">{{ podcast.grouper.title }}</a>
+        <ul>
+            {% for item in podcast.list %}
+                <li>{{item.ignore_date}}: <a href="{{ item.full_link }}">{{item.link}}</a></li>
+            {% endfor %}
+        </ul>
+        </li>
     {% endfor %}
 </ul>
+
+
 {% for podcast in podcasts %}
     <h2>{{ podcast.title }}</h2>
     <p><a href="{{ podcast.link }}">{{ podcast.link }}</a></p>
