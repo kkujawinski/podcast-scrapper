@@ -36,6 +36,7 @@ class Command(BaseCommand):
         caps["marionette"] = True
         caps["binary"] = "/opt/firefox/firefox"
         self.browser = webdriver.Firefox(capabilities=caps)
+        self.browser.set_page_load_timeout(200)
         log.info('Initialized headless Firefox')
         yield
         self.browser.quit()
@@ -69,8 +70,17 @@ class Command(BaseCommand):
         if url[0] == '/':
             current_url = self.browser.current_url
             url = '/'.join(current_url.split('/', 3)[:3]) + url
-        log.info('Opening url 2 %s', url)
-        self.browser.get(url)
+        for i in range(5):
+            try:
+                log.info('Opening url 2 %s', url)
+                self.browser.get(url)
+            except:
+                continue
+            else:
+                break
+        else:
+            raise Exception('Failed browser.get 5 retries')
+
         log.info('Opening url 3 %s', url)
         self.refresh_document()
 
