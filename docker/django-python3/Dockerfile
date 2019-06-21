@@ -7,6 +7,7 @@ RUN set -x && apt-get update && \
                 libpq-dev \
                 libxslt-dev \
                 libxml2-dev \
+                libasound2 \
                 build-essential \
                 python3-dev \
                 firefox \

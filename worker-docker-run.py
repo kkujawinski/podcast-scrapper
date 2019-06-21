@@ -17,10 +17,12 @@ else:
 
 container_cmd = ["python3", "/config/run.py", "start_worker"]
 # container_cmd = ["bash"]
+# django-admin.py scrap --batch 10 --batch-interval 0
 
 cmd = [
     "docker",
     "run",
+    "-it",
     "--user", "developer",
     "--memory", "700MB",
     "--cpu-period", "50000",
@@ -40,5 +42,7 @@ cmd = [
 ] + extra_args + [
     "podcast_scraper-django-python3",
 ] + container_cmd + command_args
+
+print ' '.join(cmd)
 
 call(cmd)

@@ -17,11 +17,12 @@ from podcast.models import (Podcast, PodcastIgnoreItem, PodcastItem,
                             PodcastScrapingConfiguration, s3_transfer_client)
 from pyvirtualdisplay import Display
 from selenium import webdriver
-from selenium.common.exceptions import NoSuchElementException
+from selenium.common.exceptions import NoSuchElementException, TimeoutException
 from selenium.webdriver.common.desired_capabilities import DesiredCapabilities
 
 log = logging.getLogger(__name__)
 
+SCRAP_RETRIES = 3
 
 class Command(BaseCommand):
     help = 'Scrap podcasts'
@@ -30,13 +31,14 @@ class Command(BaseCommand):
     def init_browser(self):
         os.environ['PATH'] = '/opt/firefox/:' + os.environ['PATH']
         log.info('Initializing headless Firefox')
+
         display = Display(visible=0, size=(1024, 768))
         display.start()
         caps = DesiredCapabilities.FIREFOX
         caps["marionette"] = True
         caps["binary"] = "/opt/firefox/firefox"
         self.browser = webdriver.Firefox(capabilities=caps)
-        self.browser.set_page_load_timeout(200)
+        self.browser.set_page_load_timeout(100)
         log.info('Initialized headless Firefox')
         yield
         self.browser.quit()
@@ -54,32 +56,32 @@ class Command(BaseCommand):
             log.info('Released lock')
 
     def refresh_document(self):
-        log.info('Refresh document 1')
         page_source = self.browser.page_source
         page_source = re.sub('xmlns(:\w+)?="[^"]+"', '', page_source)
-        log.info('Refresh document 3')
         page_source = BeautifulSoup(page_source, 'lxml')
-        log.info('Refresh document 4')
         parser = etree.XMLParser(recover=True)
-        log.info('Refresh document 5')
         self.document = etree.fromstring(str(page_source), parser)
-        log.info('Refresh document 6')
 
     def browser_open_url(self, url):
         log.info('Opening url %s', url)
         if url[0] == '/':
             current_url = self.browser.current_url
             url = '/'.join(current_url.split('/', 3)[:3]) + url
-        for i in range(5):
+
+        for i in range(1, SCRAP_RETRIES + 1):
             try:
-                log.info('Opening url 2 %s', url)
                 self.browser.get(url)
-            except:
+            except TimeoutException:
+                log.info('TimeoutException')
+                break
+            except Exception as e:
+                if i == SCRAP_RETRIES:
+                    log.exception('Couldn\'t open')
                 continue
             else:
                 break
         else:
-            raise Exception('Failed browser.get 5 retries')
+            raise Exception('Failed browser.get %d retries' % SCRAP_RETRIES)
 
         log.info('Opening url 3 %s', url)
         self.refresh_document()
