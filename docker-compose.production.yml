@@ -1,6 +1,7 @@
 proxy:
     hostname: podcast_scraper-proxy
     image: podcast_scraper-base
+    restart: unless-stopped
     command: start
     volumes_from:
         - podcast_scraper-data
@@ -9,6 +10,7 @@ proxy:
 postgres:
     hostname: podcast_scraper-postgres
     image: podcast_scraper-postgres
+    restart: unless-stopped
     command: start
     volumes_from:
         - proxy
@@ -28,6 +30,7 @@ postgres:
 django:
     hostname: podcast_scraper-django
     image: podcast_scraper-django-python3
+    restart: unless-stopped
     entrypoint: ['python3', '/config/run.py']
     command: start_uwsgi
     user: developer
@@ -51,6 +54,7 @@ django:
 nginx:
     hostname: podcast_scraper-nginx
     image: podcast_scraper-nginx
+    restart: unless-stopped
     entrypoint: ['python3', '/config/run.py']
     command: start
     volumes_from:
